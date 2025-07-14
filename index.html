@@ -8,7 +8,7 @@
     :root {
       --bg-color: #ffffff;
       --text-color: #000000;
-      --card-bg: #f5f5f5;
+      --card-bg: rgba(245, 245, 245, 0.85);
       --fb-color: #1877F2;
       --wa-color: #25D366;
     }
@@ -16,24 +16,38 @@
     body.dark {
       --bg-color: #121212;
       --text-color: #ffffff;
-      --card-bg: #1e1e1e;
+      --card-bg: rgba(30, 30, 30, 0.85);
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
+      background-image: url('https://png.pngtree.com/background/20250105/original/pngtree-richly-hued-dark-brown-wooden-texture-backdrop-picture-image_13287913.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: var(--text-color);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      position: relative;
+    }
+
+    /* Filtro oscuro para mejorar legibilidad */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
     }
 
     header {
       text-align: center;
       padding: 20px;
       background-color: var(--card-bg);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      border-radius: 0 0 15px 15px;
     }
 
     .logo {
@@ -49,6 +63,7 @@
 
     .toggle {
       margin-top: 10px;
+      color: var(--text-color);
     }
 
     main {
@@ -56,6 +71,11 @@
       max-width: 600px;
       margin: auto;
       flex: 1 0 auto;
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     .category {
@@ -71,7 +91,8 @@
       padding: 10px;
       background-color: var(--card-bg);
       border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      color: var(--text-color);
     }
 
     .item-title {
@@ -88,8 +109,9 @@
       padding: 10px 20px;
       background-color: var(--card-bg);
       border-radius: 12px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.3);
       text-align: center;
+      color: var(--text-color);
     }
 
     .contact h2 {
@@ -111,7 +133,7 @@
       color: white;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
       transition: background-color 0.3s;
     }
 
@@ -129,12 +151,6 @@
 
     .btn-whatsapp:hover {
       background-color: #1da851;
-    }
-
-    .btn svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
     }
 
     .whatsapp-float {
@@ -221,7 +237,7 @@
 
   <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/529341184667" class="whatsapp-float" target="_blank" title="Chatea por WhatsApp">
-    📞
+    💬
   </a>
 
   <script>
