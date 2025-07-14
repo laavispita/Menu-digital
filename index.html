@@ -8,7 +8,7 @@
     :root {
       --bg-color: #ffffff;
       --text-color: #000000;
-      --card-bg: rgba(245, 245, 245, 0.85);
+      --card-bg: #f5f5f5;
       --fb-color: #1877F2;
       --wa-color: #25D366;
     }
@@ -16,38 +16,24 @@
     body.dark {
       --bg-color: #121212;
       --text-color: #ffffff;
-      --card-bg: rgba(30, 30, 30, 0.85);
+      --card-bg: #1e1e1e;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('  ');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-color: var(--bg-color);
       color: var(--text-color);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      position: relative;
-    }
-
-    /* Filtro oscuro para mejorar legibilidad */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: -1;
     }
 
     header {
       text-align: center;
       padding: 20px;
       background-color: var(--card-bg);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      border-radius: 0 0 15px 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .logo {
@@ -63,7 +49,6 @@
 
     .toggle {
       margin-top: 10px;
-      color: var(--text-color);
     }
 
     main {
@@ -71,11 +56,6 @@
       max-width: 600px;
       margin: auto;
       flex: 1 0 auto;
-      background-color: var(--card-bg);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      margin-top: 20px;
-      margin-bottom: 20px;
     }
 
     .category {
@@ -91,8 +71,7 @@
       padding: 10px;
       background-color: var(--card-bg);
       border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-      color: var(--text-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .item-title {
@@ -109,9 +88,8 @@
       padding: 10px 20px;
       background-color: var(--card-bg);
       border-radius: 12px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
       text-align: center;
-      color: var(--text-color);
     }
 
     .contact h2 {
@@ -133,7 +111,7 @@
       color: white;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: background-color 0.3s;
     }
 
@@ -151,6 +129,12 @@
 
     .btn-whatsapp:hover {
       background-color: #1da851;
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
     }
 
     .whatsapp-float {
@@ -188,7 +172,7 @@
 </head>
 <body>
   <header>
-    <img class="logo" src="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/503920411_1267218402080260_4655734312353060797_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFLXAMgiPqUt60yeav9tiOGyCXR7KNgBrfIJdHso2AGt-Q71i2M0t_Cbr3fAN0cgjO6f79wC-MpIvcEzXzgIP3D&_nc_ohc=bm6wPUbqgbgQ7kNvwE7er68&_nc_oc=AdmLDf1GxXHYqvpKmLhcWbPD8z4uDYg6SMJNUtUA_RKuMNQp_pqexmumIJD1gSxAnxI&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=nCFqe1SO5l2qC3dAGIif7Q&oh=00_AfRVNiSU-DZt88ZX4kvSViqrmXSjiYirIm7fGrO-LhMKHg&oe=687B2DE9 ">
+    <img class="logo" src="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/503920411_1267218402080260_4655734312353060797_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFLXAMgiPqUt60yeav9tiOGyCXR7KNgBrfIJdHso2AGt-Q71i2M0t_Cbr3fAN0cgjO6f79wC-MpIvcEzXzgIP3D&_nc_ohc=bm6wPUbqgbgQ7kNvwE7er68&_nc_oc=AdmLDf1GxXHYqvpKmLhcWbPD8z4uDYg6SMJNUtUA_RKuMNQp_pqexmumIJD1gSxAnxI&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=g0K1x0t7sQvfm8CwLcAGSg&oh=00_AfTNb0U8S_FAf5jBBPImFV4oyTcTVyCfIbV_B9Na8Hrz-w&oe=687B2DE9" alt="Logo La Avispita">
     <h1>La Avispita</h1>
     <div class="toggle">
       <label>
@@ -207,8 +191,8 @@
     <div class="item"><span class="item-title">Sodas italianas (16 oz)</span> <span class="price">$60</span></div>
 
     <div class="category">🥤 Frappés</div>
-    <div class="item"><span class="item-title">🥤Frappuccino de moka</span> <span class="price">$60</span></div>
-    <div class="item"><span class="item-title">🥤Frappuccino de vainilla</span> <span class="price">$60</span></div>
+    <div class="item"><span class="item-title">Frappuccino de moka</span> <span class="price">$60</span></div>
+    <div class="item"><span class="item-title">Frappuccino de vainilla</span> <span class="price">$60</span></div>
     <div class="item"><span class="item-title">Oreo</span> <span class="price">$65</span></div>
     <div class="item"><span class="item-title">Fresa</span> <span class="price">$70</span></div>
     <div class="item"><span class="item-title">Chicle</span> <span class="price">$70</span></div>
@@ -224,7 +208,7 @@
     <div class="item"><span class="item-title">Blueberry Milk</span> <span class="price">$65</span></div>
 
     <div class="category">🍰 Postres</div>
-   <div class="item"><span class="item-title">Gelatina de mosaico</span> <span class="price">$30</span></div>
+    <div class="item"><span class="item-title">Gelatina de mosaico</span></div>
   </main>
 
   <section class="contact">
@@ -235,6 +219,7 @@
     </div>
   </section>
 
+  
 
   <script>
     const toggle = document.getElementById('theme-toggle');
