@@ -58,20 +58,22 @@
       flex: 1 0 auto;
     }
 
-    .category {
+    details {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    summary {
       font-weight: bold;
-      font-size: 1.3rem;
-      margin-top: 30px;
-      border-bottom: 2px solid var(--text-color);
-      padding-bottom: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
     }
 
     .item {
-      margin: 15px 0;
-      padding: 10px;
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin: 10px 0;
     }
 
     .item-title {
@@ -82,6 +84,22 @@
       float: right;
     }
 
+    .zoomable-img {
+      width: 160px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .zoomable-img:active {
+      transform: scale(2);
+      z-index: 999;
+      position: relative;
+    }
+
     .contact {
       max-width: 600px;
       margin: 30px auto 80px auto;
@@ -90,10 +108,6 @@
       border-radius: 12px;
       box-shadow: 0 1px 5px rgba(0,0,0,0.1);
       text-align: center;
-    }
-
-    .contact h2 {
-      margin-bottom: 15px;
     }
 
     .buttons {
@@ -115,27 +129,10 @@
       transition: background-color 0.3s;
     }
 
-    .btn-facebook {
-      background-color: var(--fb-color);
-    }
-
-    .btn-facebook:hover {
-      background-color: #0f5bd8;
-    }
-
-    .btn-whatsapp {
-      background-color: var(--wa-color);
-    }
-
-    .btn-whatsapp:hover {
-      background-color: #1da851;
-    }
-
-    .btn svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
-    }
+    .btn-facebook { background-color: var(--fb-color); }
+    .btn-facebook:hover { background-color: #0f5bd8; }
+    .btn-whatsapp { background-color: var(--wa-color); }
+    .btn-whatsapp:hover { background-color: #1da851; }
 
     .whatsapp-float {
       position: fixed;
@@ -152,41 +149,18 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
-
-    .zoomable-img {
-      width: 180px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .zoomable-img:active {
-      transform: scale(2);
-      z-index: 999;
-      position: relative;
-    }
+    .whatsapp-float:hover { transform: scale(1.1); }
 
     @media (max-width: 600px) {
-      .item {
-        font-size: 1rem;
-      }
-      .buttons {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .btn {
-        justify-content: center;
-      }
+      .item { font-size: 1rem; }
+      .buttons { flex-direction: column; gap: 10px; }
+      .btn { justify-content: center; }
     }
   </style>
 </head>
 <body>
   <header>
-    <img class="logo" src="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/503920411_1267218402080260_4655734312353060797_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFLXAMgiPqUt60yeav9tiOGyCXR7KNgBrfIJdHso2AGt-Q71i2M0t_Cbr3fAN0cgjO6f79wC-MpIvcEzXzgIP3D&_nc_ohc=bm6wPUbqgbgQ7kNvwE7er68&_nc_oc=AdmLDf1GxXHYqvpKmLhcWbPD8z4uDYg6SMJNUtUA_RKuMNQp_pqexmumIJD1gSxAnxI&_nc_zt=23&_nc_ht=scontent-qro1-2.xx&_nc_gid=g0K1x0t7sQvfm8CwLcAGSg&oh=00_AfTNb0U8S_FAf5jBBPImFV4oyTcTVyCfIbV_B9Na8Hrz-w&oe=687B2DE9" alt="Logo La Avispita">
+    <img class="logo" src="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/503920411_1267218402080260_4655734312353060797_n.jpg" alt="Logo La Avispita">
     <h1>La Avispita</h1>
     <div class="toggle">
       <label>
@@ -198,40 +172,45 @@
   </header>
 
   <main>
-    <div class="category">🥵🔥​ Raspados y Especialidades🥵🔥</div>
-
-    <div class="item">
-      <span class="item-title">Diablitos y Glorias (16 oz)</span>
-      <span class="price">$75</span>
-      <div style="margin-top: 10px; text-align: center;">
-        <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" 
-             alt="Diablito Mango" 
-             class="zoomable-img" />
+    <details open>
+      <summary>🥵🔥 Raspados y Especialidades</summary>
+      <div class="item">
+        <span class="item-title">Diablitos y Glorias (16 oz)</span>
+        <span class="price">$75</span>
+        <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablito Mango" class="zoomable-img" />
       </div>
-    </div>
+    </details>
 
-    <div class="category">🥤 Sodas Italianas</div>
-    <div class="item"><span class="item-title">Sodas italianas (16 oz)</span> <span class="price">$60</span></div>
+    <details>
+      <summary>🥤 Sodas Italianas</summary>
+      <div class="item"><span class="item-title">Sodas italianas (16 oz)</span><span class="price">$60</span></div>
+    </details>
 
-    <div class="category">🥤 Frappés</div>
-    <div class="item"><span class="item-title">🥤Frappuccino de moka</span> <span class="price">$60</span></div>
-    <div class="item"><span class="item-title">🥤Frappuccino de vainilla</span> <span class="price">$60</span></div>
-    <div class="item"><span class="item-title">🍩​Oreo</span> <span class="price">$65</span></div>
-    <div class="item"><span class="item-title">🍓​Fresa</span> <span class="price">$70</span></div>
-    <div class="item"><span class="item-title">🍡​Chicle</span> <span class="price">$70</span></div>
-    <div class="item"><span class="item-title">🍪Mazapán</span> <span class="price">$70</span></div>
-    <div class="item"><span class="item-title">🍫​Gansito</span> <span class="price">$75</span></div>
-    <div class="item"><span class="item-title">🍫​Choco Roles</span> <span class="price">$75</span></div>
-    <div class="item"><span class="item-title">🍫​Nutella</span> <span class="price">$75</span></div>
-    <div class="item"><span class="item-title">🍪​Ferrero Rocher</span> <span class="price">$130</span></div>
-    <div class="item"><span class="item-title">🍫Magnum</span> <span class="price">$150</span></div>
+    <details>
+      <summary>🥤 Frappés</summary>
+      <div class="item"><span class="item-title">Frappuccino de moka</span> <span class="price">$60</span></div>
+      <div class="item"><span class="item-title">Frappuccino de vainilla</span> <span class="price">$60</span></div>
+      <div class="item"><span class="item-title">🍩 Oreo</span> <span class="price">$65</span></div>
+      <div class="item"><span class="item-title">🍓 Fresa</span> <span class="price">$70</span></div>
+      <div class="item"><span class="item-title">🍡 Chicle</span> <span class="price">$70</span></div>
+      <div class="item"><span class="item-title">🍪 Mazapán</span> <span class="price">$70</span></div>
+      <div class="item"><span class="item-title">🍫 Gansito</span> <span class="price">$75</span></div>
+      <div class="item"><span class="item-title">🍫 Choco Roles</span> <span class="price">$75</span></div>
+      <div class="item"><span class="item-title">🍫 Nutella</span> <span class="price">$75</span></div>
+      <div class="item"><span class="item-title">🍪 Ferrero Rocher</span> <span class="price">$130</span></div>
+      <div class="item"><span class="item-title">🍫 Magnum</span> <span class="price">$150</span></div>
+    </details>
 
-    <div class="category">🐮Milk Drinks</div>
-    <div class="item"><span class="item-title">🐮​Strawberry Milk</span> <span class="price">$65</span></div>
-    <div class="item"><span class="item-title">🍇​Blueberry Milk</span> <span class="price">$65</span></div>
+    <details>
+      <summary>🐮 Milk Drinks</summary>
+      <div class="item"><span class="item-title">Strawberry Milk</span> <span class="price">$65</span></div>
+      <div class="item"><span class="item-title">Blueberry Milk</span> <span class="price">$65</span></div>
+    </details>
 
-    <div class="category">🍰 Postres</div>
-    <div class="item"><span class="item-title">🍰​Gelatina de mosaico</span></div>
+    <details>
+      <summary>🍰 Postres</summary>
+      <div class="item"><span class="item-title">Gelatina de mosaico</span></div>
+    </details>
   </main>
 
   <section class="contact">
