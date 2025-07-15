@@ -92,6 +92,25 @@
       display: none;
     }
 
+    .info-local {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .info-local a {
+      color: #25D366;
+      text-decoration: none;
+    }
+
+    .info-local a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
       .item {
         flex-direction: column;
@@ -113,12 +132,12 @@
   <header>
     <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita" />
     <h1>La Avispita</h1>
-     <h1>🐝Bienvenidos🐝</h1>
+    <h1>🐝Bienvenidos🐝</h1>
   </header>
 
   <div class="filter-buttons">
     <button onclick="filterMenu('Diablitos')">Diablitos</button>
-     <button onclick="filterMenu('Glorias')">Glorias</button>
+    <button onclick="filterMenu('Glorias')">Glorias</button>
     <button onclick="filterMenu('raspados')">Raspados</button>
     <button onclick="filterMenu('frappes')">Frappés</button>
     <button onclick="filterMenu('sodas Italianas')">Sodas Italianas</button>
@@ -132,7 +151,7 @@
       <div class="item-info">
         <strong>"🔥Diablitos🔥3 combinaciones de frutas"</strong><br>
         <strong>Diablito 🥝​- $55</strong><br>
-         <strong>Diablito🍍​ - $75</strong><br>
+        <strong>Diablito🍍​ - $75</strong><br>
         <strong>Diablito​🍎​​ - $100</strong><br><br><br>
         Fruta Picada: Mango, Manzana, Durazno, Grolleza , kiwi, Piña, Chamoy, Miguelito<br><br>
         Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
@@ -142,9 +161,9 @@
     <div class="item Glorias">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Glorias">
       <div class="item-info">
-         <strong>"🔥Glorias🔥3 combinaciones de frutas"</strong><br>
+        <strong>"🔥Glorias🔥3 combinaciones de frutas"</strong><br>
         <strong>Glorias 🥝​- $55</strong><br>
-         <strong>Glorias🍍​ - $75</strong><br>
+        <strong>Glorias🍍​ - $75</strong><br>
         <strong>Glorias​🍎​​ - $100</strong><br><br><br>
         Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
         Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
@@ -152,6 +171,26 @@
       </div>
     </div>
   </div>
+
+  <!-- SECCIÓN AGREGADA -->
+  <div class="info-local">
+    <h2>📍 Información del Local</h2>
+    <p><strong>Dirección:</strong><br>
+      <a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">
+        Ver en Google Maps
+      </a>
+    </p>
+    <p><strong>🕒 Horario de atención:</strong><br>
+      De miércoles a lunes<br>
+      3:00 PM - 10:00 PM
+    </p>
+    <p><strong>🔗 Síguenos en Facebook:</strong><br>
+      <a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">
+        Ir a nuestra página de Facebook
+      </a>
+    </p>
+  </div>
+  <!-- FIN DE SECCIÓN AGREGADA -->
 
   <script>
     function filterMenu(category) {
