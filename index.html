@@ -31,9 +31,12 @@
     }
 
     .logo {
-      max-width: 120px;
+      width: 80px;       /* tamaño más pequeño */
+      height: 80px;      /* para que sea cuadrado */
       border-radius: 50%;
+      object-fit: cover; /* que la imagen no se distorsione */
       margin-bottom: 10px;
+      display: inline-block;
     }
 
     h1 {
@@ -90,10 +93,11 @@
     }
 
     .product-img {
-      width: 120px;
+      width: 80px;          /* más pequeña la imagen del producto */
       border-radius: 10px;
       margin-top: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: block;
     }
 
     .contact {
