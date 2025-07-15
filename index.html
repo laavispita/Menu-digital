@@ -1,6 +1,154 @@
-<!doctype html><html lang="es"><head><meta charset="UTF-8">
-  <meta content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#253746"><meta name="description" content="Es un sistema web que permite levantar el pedido, rápido, fácil y sencillo, sin necesidad de que descarguen alguna App, podrán ver el menú en linea y ordenar. El pedido lo recibirás directamente en tu WhatsApp."><title>Plick App</title><link rel="manifest" href="/90858b6f781d6ccb6d95.json"><link rel="icon" href="/d8abc2815956608c4cc7.ico">
-  <script>!function(e,n,t,o,c,s,a){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),c.push=c,c.loaded=!0,c.version="2.0",c.queue=[],(s=n.createElement(t)).async=!0,s.src="https://connect.facebook.net/en_US/fbevents.js",(a=n.getElementsByTagName(t)[0]).parentNode.insertBefore(s,a))}(window,document,"script")</script><script defer="defer" src="/runtime-145853003d0cb71acf71.js">
-    
-  </script><script defer="defer" src="/assets/vendor-168526c2378ed1d4c909.js"></script><script defer="defer" src="/main-57197a432ea6298886e2.js"></script><link href="/main-f092bb4c92155313f03b.css" rel="stylesheet"></head><body><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menú filtrable - La Avispita</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --card-bg: #1e1e1e;
+      --fb-color: #1877F2;
+      --wa-color: #25D366;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--card-bg);
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .filter-buttons button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #555;
+    }
+
+    .menu {
+      max-width: 700px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .item {
+      background-color: var(--card-bg);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .item img {
+      width: 40px;
+      border-radius: 5px;
+    }
+
+    .item-info {
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita" />
+    <h1>La Avispita</h1>
+  </header>
+
+  <div class="filter-buttons">
+    <button onclick="filterMenu('all')">Todos</button>
+    <button onclick="filterMenu('raspados')">Raspados</button>
+    <button onclick="filterMenu('frappes')">Frappés</button>
+    <button onclick="filterMenu('sodas')">Sodas</button>
+    <button onclick="filterMenu('milk')">Milk Drinks</button>
+    <button onclick="filterMenu('postres')">Postres</button>
+  </div>
+
+  <div class="menu">
+    <div class="item raspados">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablito">
+      <div class="item-info">Diablito Mango (16 oz) - $75</div>
+    </div>
+
+    <div class="item sodas">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Soda Italiana - $60</div>
+    </div>
+
+    <div class="item frappes">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Frappé de moka - $60</div>
+    </div>
+
+    <div class="item frappes">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Frappé de vainilla - $60</div>
+    </div>
+
+    <div class="item milk">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Strawberry Milk - $65</div>
+    </div>
+
+    <div class="item postres">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Gelatina de mosaico</div>
+    </div>
+  </div>
+
+  <script>
+    function filterMenu(category) {
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        if (category === 'all') {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.toggle('hidden', !item.classList.contains(category));
+        }
+      });
+    }
+  </script>
+</body>
+</html>
