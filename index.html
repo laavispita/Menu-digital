@@ -72,22 +72,40 @@
       border-radius: 10px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
     }
 
     .item img {
-      width: 40px;
-      border-radius: 5px;
+      width: 80px;
+      border-radius: 10px;
+      flex-shrink: 0;
     }
 
     .item-info {
-      flex: 1;
-      margin-left: 10px;
+      flex: 1 1 200px;
+      display: block;
     }
 
     .hidden {
       display: none;
+    }
+
+    @media (max-width: 600px) {
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item img {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      .item-info {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -98,7 +116,7 @@
   </header>
 
   <div class="filter-buttons">
-     <button onclick="filterMenu('convinaciones')">Convinaciones</button>
+    <button onclick="filterMenu('convinaciones')">Convinaciones</button>
     <button onclick="filterMenu('raspados')">Raspados</button>
     <button onclick="filterMenu('frappes')">Frappés</button>
     <button onclick="filterMenu('sodas')">Sodas</button>
@@ -109,12 +127,11 @@
   <div class="menu">
     <div class="item convinaciones">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablito">
-      <div class="item-info">Diablito Mango (N°16) - $75</div>
-      <div class="item-info">Mango,Manzana,Chamoy,Miguelito,</div>
-      
+      <div class="item-info">
+        <strong>Diablito Mango (N°16) - $75</strong><br>
+        Mango, Manzana, Chamoy, Miguelito
       </div>
     </div>
-
   </div>
 
   <script>
