@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menú - La Avispita</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menú filtrable - La Avispita</title>
   <style>
     :root {
       --bg-color: #121212;
@@ -18,16 +18,12 @@
       font-family: Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
       text-align: center;
       padding: 20px;
       background-color: var(--card-bg);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .logo {
@@ -40,243 +36,118 @@
 
     h1 {
       margin: 0;
-      font-size: 2rem;
     }
 
-    nav {
-      background-color: var(--card-bg);
+    .filter-buttons {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-
-    .menu-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .filter-buttons button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #555;
     }
 
     .menu {
-      position: relative;
-    }
-
-    .menu-title {
-      font-weight: bold;
-      cursor: pointer;
+      max-width: 700px;
+      margin: auto;
       padding: 10px;
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: var(--card-bg);
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 999;
-      width: max-content;
-    }
-
-    .menu:hover .submenu {
-      display: block;
     }
 
     .item {
-      margin: 8px 0;
-    }
-
-    .item-title {
-      font-weight: bold;
-    }
-
-    .price {
-      float: right;
-    }
-
-    .product-img {
-      width: 50px;
-      border-radius: 6px;
-      margin-top: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      display: block;
-    }
-
-    .contact {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 10px 20px;
       background-color: var(--card-bg);
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 30px;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
+      justify-content: space-between;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .btn-facebook {
-      background-color: var(--fb-color);
+    .item img {
+      width: 40px;
+      border-radius: 5px;
     }
 
-    .btn-facebook:hover {
-      background-color: #0f5bd8;
+    .item-info {
+      flex: 1;
+      margin-left: 10px;
     }
 
-    .btn-whatsapp {
-      background-color: var(--wa-color);
-    }
-
-    .btn-whatsapp:hover {
-      background-color: #1da851;
-    }
-
-    /* RESPONSIVE: HAMBURGUESA EN CELULAR */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .menu-container {
-        flex-direction: column;
-        display: none;
-        width: 100%;
-        gap: 0;
-        align-items: center;
-      }
-
-      .menu-container.show {
-        display: flex;
-      }
-
-      .menu-title {
-        width: 100%;
-        text-align: center;
-        padding: 15px;
-        border-bottom: 1px solid #333;
-      }
-
-      .menu:hover .submenu {
-        position: relative;
-      }
-
-      .submenu {
-        position: relative;
-        box-shadow: none;
-        width: 100%;
-      }
-
-      .item {
-        padding: 5px 0;
-      }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita">
+    <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita" />
     <h1>La Avispita</h1>
   </header>
 
-  <nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰ Menú</div>
-    <div class="menu-container" id="menuContainer">
+  <div class="filter-buttons">
+    <button onclick="filterMenu('all')">Todos</button>
+    <button onclick="filterMenu('raspados')">Raspados</button>
+    <button onclick="filterMenu('frappes')">Frappés</button>
+    <button onclick="filterMenu('sodas')">Sodas</button>
+    <button onclick="filterMenu('milk')">Milk Drinks</button>
+    <button onclick="filterMenu('postres')">Postres</button>
+  </div>
 
-      <!-- Raspados -->
-      <div class="menu">
-        <div class="menu-title">🥵 Raspados</div>
-        <div class="submenu">
-          <div class="item">
-            <span class="item-title">Diablitos y Glorias (16 oz)</span> <span class="price">$75</span><br>
-            <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Producto" class="product-img">
-          </div>
-        </div>
-      </div>
-
-      <!-- Sodas -->
-      <div class="menu">
-        <div class="menu-title">🥤 Sodas Italianas</div>
-        <div class="submenu">
-          <div class="item"><span class="item-title">Sodas italianas (16 oz)</span> <span class="price">$60</span><br>
-            <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Producto" class="product-img">
-          </div>
-        </div>
-      </div>
-
-      <!-- Frappés -->
-      <div class="menu">
-        <div class="menu-title">🥤 Frappés</div>
-        <div class="submenu">
-          <div class="item"><span class="item-title">Frappuccino de moka</span> <span class="price">$60</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Frappuccino de vainilla</span> <span class="price">$60</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Oreo</span> <span class="price">$65</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Fresa</span> <span class="price">$70</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Chicle</span> <span class="price">$70</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Mazapán</span> <span class="price">$70</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Gansito</span> <span class="price">$75</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Choco Roles</span> <span class="price">$75</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Nutella</span> <span class="price">$75</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Ferrero Rocher</span> <span class="price">$130</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Magnum</span> <span class="price">$150</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-        </div>
-      </div>
-
-      <!-- Milk Drinks -->
-      <div class="menu">
-        <div class="menu-title">🐮 Milk Drinks</div>
-        <div class="submenu">
-          <div class="item"><span class="item-title">Strawberry Milk</span> <span class="price">$65</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-          <div class="item"><span class="item-title">Blueberry Milk</span> <span class="price">$65</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-        </div>
-      </div>
-
-      <!-- Postres -->
-      <div class="menu">
-        <div class="menu-title">🍰 Postres</div>
-        <div class="submenu">
-          <div class="item"><span class="item-title">Gelatina de mosaico</span><br><img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" class="product-img"></div>
-        </div>
-      </div>
+  <div class="menu">
+    <div class="item raspados">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablito">
+      <div class="item-info">Diablito Mango (16 oz) - $75</div>
     </div>
-  </nav>
 
-  <section class="contact">
-    <h2>📞 Contáctanos</h2>
-    <div class="buttons">
-      <a href="https://www.facebook.com/share/1CPtA3Roue/" target="_blank" class="btn btn-facebook" rel="noopener noreferrer">Facebook</a>
-      <a href="https://wa.me/529341184667" target="_blank" class="btn btn-whatsapp" rel="noopener noreferrer">WhatsApp</a>
+    <div class="item sodas">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Soda Italiana - $60</div>
     </div>
-  </section>
+
+    <div class="item frappes">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Frappé de moka - $60</div>
+    </div>
+
+    <div class="item frappes">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Frappé de vainilla - $60</div>
+    </div>
+
+    <div class="item milk">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Strawberry Milk - $65</div>
+    </div>
+
+    <div class="item postres">
+      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png">
+      <div class="item-info">Gelatina de mosaico</div>
+    </div>
+  </div>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menuContainer');
-      menu.classList.toggle('show');
+    function filterMenu(category) {
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        if (category === 'all') {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.toggle('hidden', !item.classList.contains(category));
+        }
+      });
     }
   </script>
 </body>
