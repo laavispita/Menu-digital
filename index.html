@@ -102,13 +102,31 @@
       line-height: 1.6;
     }
 
-    .info-local a {
-      color: #25D366;
+    .boton-mapa, .boton-fb {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
       text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
-    .info-local a:hover {
-      text-decoration: underline;
+    .boton-mapa {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .boton-mapa:hover {
+      background-color: #1da851;
+    }
+
+    .boton-fb {
+      background-color: #1877F2;
+      color: white;
+    }
+
+    .boton-fb:hover {
+      background-color: #0e5fd4;
     }
 
     @media (max-width: 600px) {
@@ -132,7 +150,7 @@
   <header>
     <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita" />
     <h1>La Avispita</h1>
-    <h3>🐝Bienvenidos🐝</h3>
+    <h1>🐝Bienvenidos🐝</h1>
   </header>
 
   <div class="filter-buttons">
@@ -244,27 +262,24 @@
 
 <!-- Aquí continúa normalmente tu bloque de info-local, script, etc... -->
 
-
-
   <!-- SECCIÓN AGREGADA -->
   <div class="info-local">
     <h2>📍 Información del Local</h2>
-    <p><strong>Dirección:</strong><br>
-      <a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">
-        Ver en Google Maps
-      </a>
-    </p>
+    <p><strong>Dirección:</strong></p>
+    <a class="boton-mapa" href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">
+      🗺️ Ver ubicación en Google Maps
+    </a>
+
     <p><strong>🕒 Horario de atención:</strong><br>
       De miércoles a lunes<br>
       3:00 PM - 10:00 PM
     </p>
-    <p><strong>🔗 Síguenos en Facebook:</strong><br>
-      <a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">
-        Ir a nuestra página de Facebook
-      </a>
-    </p>
+
+    <p><strong>🔗 Síguenos en Facebook:</strong></p>
+    <a class="boton-fb" href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">
+      👍 Visítanos en Facebook
+    </a>
   </div>
-  <!-- FIN DE SECCIÓN AGREGADA -->
 
   <script>
     function filterMenu(category) {
