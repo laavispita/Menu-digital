@@ -153,9 +153,15 @@
     <h3>🐝Bienvenidos🐝</h3>
   </header>
 
+  <!-- Buscador -->
+  <div style="text-align: center; margin: 20px;">
+    <input type="text" id="searchInput" placeholder="🔍 Buscar producto o palabra clave..." 
+      style="padding: 10px 20px; width: 80%; max-width: 400px; border-radius: 20px; border: none; outline: none; font-size: 16px;">
+  </div>
+
   <div class="filter-buttons">
     <button onclick="filterMenu('Diablitos')">Diablitos</button>
-   <button onclick="filterMenu('Glorias')">Glorias</button>
+    <button onclick="filterMenu('Glorias')">Glorias</button>
     <button onclick="filterMenu('Raspados')">Raspados</button>
     <button onclick="filterMenu('Frappes')">Frappes</button>
     <button onclick="filterMenu('Sodas')">Sodas</button>
@@ -163,10 +169,9 @@
     <button onclick="filterMenu('Postres')">Postres</button>
   </div>
 
-  <!-- ...todo tu código arriba se mantiene igual... -->
-
+  <!-- Aquí va todo tu menú -->
   <div class="menu">
-    <div class="item Diablitos">
+ <div class="item Diablitos">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablitos">
       <div class="item-info">
         <strong>"🔥Diablitos🔥3 combinaciones de frutas"</strong><br>
@@ -191,8 +196,7 @@
       </div>
     </div>
 
-    <!-- NUEVOS BLOQUES AÑADIDOS ABAJO -->
-
+  
     <div class="item Raspados">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Raspados">
       <div class="item-info">
@@ -257,12 +261,9 @@
         Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
       </div>
     </div>
-
   </div>
 
-<!-- Aquí continúa normalmente tu bloque de info-local, script, etc... -->
-
-  <!-- SECCIÓN AGREGADA -->
+  
   <div class="info-local">
     <h2>📍 Información del Local</h2>
     <p><strong>Dirección:</strong></p>
@@ -292,6 +293,18 @@
         }
       });
     }
+  </script>
+
+  <script>
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      const items = document.querySelectorAll('.item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? 'flex' : 'none';
+      });
+    });
   </script>
 </body>
 </html>
