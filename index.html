@@ -2,306 +2,176 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Menú filtrable - La Avispita</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Avispita - Menú Digital</title>
   <style>
     :root {
-      --bg-color: #121212;
-      --text-color: #ffffff;
-      --card-bg: #1e1e1e;
-      --fb-color: #1877F2;
-      --wa-color: #25D366;
+      --bg-color: #f7f7f7;
+      --primary-color: #ffc107;
+      --text-color: #333;
+      --card-bg: #fff;
+      --accent-color: #ff5722;
+      --radius: 15px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
     }
 
     header {
+      background-color: var(--primary-color);
+      padding: 2rem 1rem;
       text-align: center;
-      padding: 20px;
-      background-color: var(--card-bg);
+      color: #000;
     }
 
-    .logo {
-      width: 80px;
-      height: 80px;
+    header img {
+      width: 100px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
 
     h1 {
       margin: 0;
+      font-size: 2rem;
     }
 
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px;
-    }
-
-    .filter-buttons button {
-      padding: 10px 20px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .filter-buttons button:hover {
-      background-color: #555;
-    }
-
-    .menu {
-      max-width: 700px;
-      margin: auto;
-      padding: 10px;
-    }
-
-    .item {
-      background-color: var(--card-bg);
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      flex-wrap: wrap;
-    }
-
-    .item img {
-      width: 80px;
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-
-    .item-info {
-      flex: 1 1 200px;
-      display: block;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .info-local {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: var(--card-bg);
-      border-radius: 10px;
+    .search-bar {
       text-align: center;
-      line-height: 1.6;
+      margin: 2rem auto 1rem;
     }
 
-    .boton-mapa, .boton-fb {
-      display: inline-block;
+    .search-bar input {
       padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
+      width: 80%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      font-size: 16px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-body h3 {
+      margin: 0 0 0.5rem;
+      color: var(--accent-color);
+    }
+
+    .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: var(--primary-color);
       text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .boton-mapa {
-      background-color: #25D366;
-      color: white;
-    }
-
-    .boton-mapa:hover {
-      background-color: #1da851;
-    }
-
-    .boton-fb {
-      background-color: #1877F2;
-      color: white;
-    }
-
-    .boton-fb:hover {
-      background-color: #0e5fd4;
-    }
-
-    @media (max-width: 600px) {
-      .item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .item img {
-        width: 100px;
-        margin-bottom: 10px;
-      }
-
-      .item-info {
-        width: 100%;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img class="logo" src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita" />
+    <img src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita">
     <h1>La Avispita</h1>
-    <h3>🐝Bienvenidos🐝</h3>
+    <p>Delicias que pican sabroso 🐝</p>
   </header>
 
-  <!-- Buscador -->
-  <div style="text-align: center; margin: 20px;">
-    <input type="text" id="searchInput" placeholder="🔍 Buscar producto o palabra clave..." 
-      style="padding: 10px 20px; width: 80%; max-width: 400px; border-radius: 20px; border: none; outline: none; font-size: 16px;">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar producto...">
   </div>
 
-  <div class="filter-buttons">
-    <button onclick="filterMenu('Diablitos')">Diablitos</button>
-    <button onclick="filterMenu('Glorias')">Glorias</button>
-    <button onclick="filterMenu('Raspados')">Raspados</button>
-    <button onclick="filterMenu('Frappes')">Frappes</button>
-    <button onclick="filterMenu('Sodas')">Sodas</button>
-    <button onclick="filterMenu('Milk')">Milk</button>
-    <button onclick="filterMenu('Postres')">Postres</button>
-  </div>
-
-  <!-- Aquí va todo tu menú -->
-  <div class="menu">
- <div class="item Diablitos">
+  <section class="products" id="productList">
+    <div class="card">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablitos">
-      <div class="item-info">
-        <strong>"🔥Diablitos🔥3 combinaciones de frutas"</strong><br>
-        <strong>Diablito 🥝​- $55</strong><br>
-        <strong>Diablito🍍​ - $75</strong><br>
-        <strong>Diablito​🍎​​ - $100</strong><br><br><br>
-        Fruta Picada: Mango, Manzana, Durazno, Grolleza , kiwi, Piña, Chamoy, Miguelito<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
+      <div class="card-body">
+        <h3>Diablitos</h3>
+        <p>Fruta picada: Mango, Manzana, Durazno, Kiwi, Piña. Sabor de esencia: Chicle, Coca, Fresa.</p>
       </div>
     </div>
 
-    <div class="item Glorias">
+    <div class="card">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Glorias">
-      <div class="item-info">
-        <strong>"🍦Glorias🍦3 combinaciones de frutas"</strong><br>
-        <strong>Glorias 🥝​- $55</strong><br>
-        <strong>Glorias🍍​ - $75</strong><br>
-        <strong>Glorias​🍎​​ - $100</strong><br><br><br>
-        Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
-        Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
+      <div class="card-body">
+        <h3>Glorias</h3>
+        <p>Combinación de frutas naturales con sabores como fresa, piña, tamarindo y más. ¡Una explosión de sabor!</p>
       </div>
     </div>
 
-  
-    <div class="item Raspados">
-      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Raspados">
-      <div class="item-info">
-        <strong>"🍧Raspados🍧3 combinaciones de frutas"</strong><br>
-        <strong>Raspados 🥝​- $55</strong><br>
-        <strong>Raspados🍍​ - $75</strong><br>
-        <strong>Raspados​🍎​​ - $100</strong><br><br><br>
-        Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
-        Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
-      </div>
-    </div>
-
-    <div class="item Frappes">
+    <div class="card">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Frappes">
-      <div class="item-info">
-        <strong>"🍨Frappés🍨3 combinaciones de frutas"</strong><br>
-        <strong>Frappés 🥝​- $55</strong><br>
-        <strong>Frappés🍍​ - $75</strong><br>
-        <strong>Frappés​🍎​​ - $100</strong><br><br><br>
-        Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
-        Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
+      <div class="card-body">
+        <h3>Frappes</h3>
+        <p>Refrescantes bebidas frappé con mezcla de frutas, chamoy y esencias dulces. Perfectos para el calor.</p>
       </div>
     </div>
 
-    <div class="item Sodas">
-      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Sodas">
-      <div class="item-info">
-        <strong>"🍷Sodas Italianas🍷3 combinaciones de frutas"</strong><br>
-        <strong>Sodas Italianas 🥝​- $55</strong><br>
-        <strong>Sodas Italianas🍍​ - $75</strong><br>
-        <strong>Sodas Italianas​🍎​​ - $100</strong><br><br><br>
-        Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
-        Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
-      </div>
-    </div>
-
-    <div class="item Milk">
-      <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Milk">
-      <div class="item-info">
-        <strong>"🐄Milk Drinks🐄3 combinaciones de frutas"</strong><br>
-        <strong>Milk Drinks 🍫​- $55</strong><br>
-        <strong>Milk Drinks🍭​ - $75</strong><br>
-        <strong>Milk Drinks🍫​​​ - $100</strong><br><br><br>
-        Fruta Picada: Chamoy, Mango, Durazno, Grolleza , kiwi, Fresa, Mazana, Piña<br><br>
-        Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva<br><br>
-        Sabores Naturales: Fresa, Piña, Mango, Tamarindo, Guanabana, nance, Nance curtido<br><br>
-      </div>
-    </div>
-
-    <div class="item Postres">
+    <div class="card">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Postres">
-      <div class="item-info">
-        <strong>"🍰Postres🍰</strong><br><br><br>
-        <strong> Pastel de pollo entero​- $200</strong><br><br>
-        <strong> Rebanadas ​ - $30</strong><br><br>
-        <strong> Pay de queso ​ ​​- $250</strong><br><br>
-        <strong> Rebanada - $30</strong><br><br>
-        
+      <div class="card-body">
+        <h3>Postres</h3>
+        <p>Endulza tu día con nuestros postres frutales, preparados al momento y llenos de color y sabor.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  
-  <div class="info-local">
-    <h2>📍Mercado nuevo CETRAM-Balancan Tab.📍 </h2>
-    <p><strong>Dirección:</strong></p>
-    <a class="boton-mapa" href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">
-      🗺️ Ver ubicación en Google Maps
-    </a>
-
-    <p><strong>🕒 Horario de atención:🕒</strong><br>
-      De miércoles a lunes<br>
-      3:00 PM - 10:00 PM
-    </p>
-
-    <p><strong>🔗 Síguenos en Facebook:🔗</strong></p>
-    <a class="boton-fb" href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">
-      👍 Visítanos en Facebook👍
-    </a>
-  </div>
+  <footer>
+    <p>📍 Balancán, Tabasco<br>🕒 Miércoles a lunes, 3:00 PM - 10:00 PM</p>
+    <p><a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">Ver ubicación en Google Maps</a></p>
+    <p><a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">Síguenos en Facebook</a></p>
+  </footer>
 
   <script>
-    function filterMenu(category) {
-      const items = document.querySelectorAll('.item');
-      items.forEach(item => {
-        if (category === 'all') {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.toggle('hidden', !item.classList.contains(category));
-        }
-      });
-    }
-  </script>
+    const searchInput = document.getElementById('searchInput');
+    const productCards = document.querySelectorAll('.card');
 
-  <script>
-    document.getElementById('searchInput').addEventListener('input', function () {
+    searchInput.addEventListener('input', function () {
       const query = this.value.toLowerCase();
-      const items = document.querySelectorAll('.item');
-
-      items.forEach(item => {
-        const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(query) ? 'flex' : 'none';
+      productCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
       });
     });
   </script>
