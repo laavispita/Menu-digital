@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Avispita - Menú Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --bg-color: #f7f7f7;
@@ -20,9 +22,27 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
     }
 
     header {
@@ -98,6 +118,37 @@
       line-height: 1.4;
     }
 
+    .gallery {
+      max-width: 1000px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+
+    .testimonios {
+      background-color: #fff9e6;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .testimonios h2 {
+      color: var(--accent-color);
+    }
+
+    .testimonios p {
+      max-width: 600px;
+      margin: auto;
+      font-style: italic;
+      padding: 0.5rem 0;
+    }
+
     footer {
       background-color: #222;
       color: #fff;
@@ -110,10 +161,28 @@
       color: var(--primary-color);
       text-decoration: none;
     }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-btn img {
+      width: 60px;
+    }
   </style>
 </head>
 <body>
-  <header>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Menú</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <header id="inicio">
     <img src="https://i.pinimg.com/736x/ec/4a/83/ec4a838bdece3153cae38ade065d63a8.jpg" alt="Logo La Avispita">
     <h1>La Avispita</h1>
     <p>Delicias que pican sabroso 🐝</p>
@@ -123,8 +192,8 @@
     <input type="text" id="searchInput" placeholder="Buscar producto...">
   </div>
 
-  <section class="products" id="productList">
-    <div class="card">
+  <section class="products" id="productos">
+    <div class="card" data-aos="fade-up">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Diablitos">
       <div class="card-body">
         <h3>Diablitos</h3>
@@ -132,7 +201,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Glorias">
       <div class="card-body">
         <h3>Glorias</h3>
@@ -140,7 +209,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Frappes">
       <div class="card-body">
         <h3>Frappes</h3>
@@ -148,7 +217,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <img src="https://www.diablitoloco.com/wp-content/uploads/Mangonada.png" alt="Postres">
       <div class="card-body">
         <h3>Postres</h3>
@@ -157,13 +226,33 @@
     </div>
   </section>
 
-  <footer>
+  <section class="gallery" id="galeria">
+    <img src="https://source.unsplash.com/featured/?icecream" alt="Foto 1">
+    <img src="https://source.unsplash.com/featured/?snack" alt="Foto 2">
+    <img src="https://source.unsplash.com/featured/?fruit" alt="Foto 3">
+    <img src="https://source.unsplash.com/featured/?mango" alt="Foto 4">
+  </section>
+
+  <section class="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <p>“La mejor mangonada de Balancán 😍” — Andrea R.</p>
+    <p>“Todo delicioso y buena atención, súper recomendado” — Luis M.</p>
+  </section>
+
+  <footer id="contacto">
     <p>📍 Balancán, Tabasco<br>🕒 Miércoles a lunes, 3:00 PM - 10:00 PM</p>
     <p><a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">Ver ubicación en Google Maps</a></p>
     <p><a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">Síguenos en Facebook</a></p>
   </footer>
 
+  <a href="https://wa.me/529341184667" class="whatsapp-btn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init();
+
     const searchInput = document.getElementById('searchInput');
     const productCards = document.querySelectorAll('.card');
 
