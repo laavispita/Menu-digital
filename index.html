@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,18 +16,13 @@
       --accent-color: #ff5722;
       --radius: 15px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
     }
-
     nav {
       position: sticky;
       top: 0;
@@ -38,36 +34,27 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 999;
     }
-
     nav a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: bold;
     }
-
     header {
       background-color: var(--primary-color);
       padding: 2rem 1rem;
       text-align: center;
       color: #000;
     }
-
     header img {
       width: 100px;
       border-radius: 50%;
       margin-bottom: 1rem;
     }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
+    h1 { margin: 0; font-size: 2rem; }
     .search-bar {
       text-align: center;
       margin: 2rem auto 1rem;
     }
-
     .search-bar input {
       padding: 10px 20px;
       width: 80%;
@@ -76,7 +63,6 @@
       border-radius: var(--radius);
       font-size: 16px;
     }
-
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -85,7 +71,6 @@
       max-width: 1200px;
       margin: auto;
     }
-
     .card {
       background-color: var(--card-bg);
       border-radius: var(--radius);
@@ -93,31 +78,23 @@
       overflow: hidden;
       transition: transform 0.2s;
     }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
+    .card:hover { transform: translateY(-5px); }
     .card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-
     .card-body {
       padding: 1rem;
     }
-
     .card-body h3 {
       margin: 0 0 0.5rem;
       color: var(--accent-color);
     }
-
     .card-body p {
       font-size: 0.95rem;
       line-height: 1.4;
     }
-
     .gallery {
       max-width: 1000px;
       margin: 2rem auto;
@@ -126,29 +103,22 @@
       gap: 1rem;
       padding: 0 1rem;
     }
-
     .gallery img {
       width: 100%;
       border-radius: var(--radius);
     }
-
     .testimonios {
       background-color: #fff9e6;
       padding: 2rem 1rem;
       text-align: center;
     }
-
-    .testimonios h2 {
-      color: var(--accent-color);
-    }
-
+    .testimonios h2 { color: var(--accent-color); }
     .testimonios p {
       max-width: 600px;
       margin: auto;
       font-style: italic;
       padding: 0.5rem 0;
     }
-
     footer {
       background-color: #222;
       color: #fff;
@@ -156,22 +126,17 @@
       padding: 2rem 1rem;
       margin-top: 2rem;
     }
-
     footer a {
       color: var(--primary-color);
       text-decoration: none;
     }
-
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 1000;
     }
-
-    .whatsapp-btn img {
-      width: 60px;
-    }
+    .whatsapp-btn img { width: 60px; }
   </style>
 </head>
 <body>
@@ -180,85 +145,165 @@
     <a href="#contacto">Contacto</a>
   </nav>
 
-  <header id="    ">
+  <header>
     <img src="https://img.freepik.com/vector-premium/avispa-dibujos-animados-vuelo-concepto-logotipo-insecto-linda-mascota-avispa-abeja_641602-588.jpg" alt="Logo La Avispita">
     <h1>La Avispita</h1>
     <p>🐝"Delicias que pican"🐝</p>
   </header>
- <div class="search-bar">
+
+  <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Buscar producto...">
   </div>
 
-  
+ <!-- Nueva tarjeta: Tamaños de Diablito -->
+
   <section class="products" id="productos">
+    <!-- Existing product cards... -->
     <div class="card" data-aos="fade-up">
       <img src="https://i.pinimg.com/736x/90/bf/bc/90bfbc950dc403cca6c18bcbf951862f.jpg" alt="Diablitos">
       <div class="card-body">
         <h3>Diablitos</h3>
-        <p>Fruta picada: Mango, Manzana, Durazno, Kiwi, Piña, Fresa</p>
-        <p>Sabor de esencia: Chicle, Coca, Fresa</p>  
+        <p>Fruta picada: 🥭Mango, Manzana, Durazno, 🥝Kiwi, Piña, 🍓Fresa, Grosella</p>
+        <p>Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva, Piña, </p>
+        <p>Sabor de Naturales:Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
+        <h4>Favor de especificar fruta y esencia</h4>
       </div>
     </div>
 
+    <div class="card" data-aos="fade-up">
+      <div class="card-body">
+        <h3>Diablito - Tamaños y Precios</h3>
+        <p>🥤 Diablito de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Diablito de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Diablito de 250 ml - <strong>$55</strong></p>
+      </div>
+    </div>
 
+ <!-- Nueva tarjeta: Tamaños de Glorias -->
+
+<div class="card" data-aos="fade-up">
+      <img src="https://i.blogs.es/860e47/dap-1-32-/1366_2000.jpg" alt="Glorias">
+      <div class="card-body">
+        <h3>Glorias</h3>
+        <p>Fruta picada: 🥭Mango, Manzana, Durazno, 🥝Kiwi, Piña, 🍓Fresa, Grosella</p>
+        <p>Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva, Piña, </p>
+        <p>Sabor de Naturales:Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
+        <h4>Favor de especificar fruta y esencia</h4>
+      </div>
+    </div>
+
+ 
+    <div class="card" data-aos="fade-up">
+      <div class="card-body">
+        <h3>Glorias - Tamaños y Precios</h3>
+        <p>🥤 Glorias de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Glorias de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Glorias de 250 ml - <strong>$55</strong></p>
+      </div>
+    </div>
+
+ <!-- Nueva tarjeta: Tamaños de Sodas -->
 
 <div class="card" data-aos="fade-up">
       <img src="https://losmilagrosdedalila.com/wp-content/uploads/2017/04/SODA-ITALIANA-FRESA-9715.jpg" alt="Sodas">
       <div class="card-body">
-        <h3>Sodas</h3>
-        <p>Esencias: Chicle, Fresa</p>
-        <p>Agua mineral, Refresco de toronja, sirope, perlas explosivas</p>
+        <h3>Sodas Italianas</h3>
+        <p>Sirope: Fresa, Uva,🍇 Chicle </p>
+        <p>Agua mineral🧊, Refresco de toronja,🍊perlas explosivas🎆</p>
       </div>
     </div>
 
-
-   
     <div class="card" data-aos="fade-up">
-      <img src="https://i.blogs.es/860e47/dap-1-32-/1366_2000.jpg" alt="Glorias">
       <div class="card-body">
-        <h3>Glorias</h3>
-      <p>Fruta picada: Mango, Manzana, Durazno, Kiwi, Piña, Fresa</p>
-     <p>Sabor de esencia: Chicle, Coca, Fresa, Tamarindo, Nance, Nance curtido</p>
+        <h3>Sodas - Tamaños y Precios</h3>
+        <p>🥤 Sodas de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Sodas de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Sodas de 250 ml - <strong>$55</strong></p>
       </div>
     </div>
 
-   
+
+
+    <!-- Nueva tarjeta: Tamaños de Frappes -->
+
     <div class="card" data-aos="fade-up">
       <img src="https://i0.wp.com/www.buenossaborespanama.com/wp-content/uploads/2020/09/867-scaled.jpg?fit=1709%2C2560&ssl=1" alt="Frappes">
       <div class="card-body">
         <h3>Frappes</h3>
-        <p>🍧Frappe de Moka</p>
-        <p>🍧Frappe de Magnum</p>
-        <p>🍧Frappe de Gallera oreo</p>
-        <p>🍧Frappe de Gansito</p>
-        <p>🍧Frappe de Queso de poro</p>
-      </div>
-    </div> 
-
-
-<div class="card" data-aos="fade-up">
-      <img src="https://www.progelcone.com/med/pr/3/0112730_1.jpg" alt="Raspados">
-      <div class="card-body">
-        <h3>Raspados</h3>
-         <p>Sabor de esencia: Chicle, Coca, Fresa, Tamarindo, Nance</p>
-        <p></p>
+        <p>🍫Frapuccino de Moka</p>
+        <p>🧁Frapuccino de Magnum</p>
+        <p>🍪Frapuccino de Gallera oreo</p>
+        <p>🍧Frapuccino de Fresa</p>
+        <p>🧀Frapuccino de Queso de poro</p>
       </div>
     </div>
-
-
 
     <div class="card" data-aos="fade-up">
-      <img src="https://www.steamycooker.com/wp-content/uploads/2020/08/flan-5.jpg" alt="Postres">
       <div class="card-body">
-        <h3>Postres</h3>
-        <p>Queso Napolitano</p>
-        <p>Pastel de pollo</p>
-        <p>Gelatina de mozaico</p>
+        <h3>Frappe - Tamaños y Precios</h3>
+        <p>🥤 Frapuccino de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Frapuccino de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Frapuccino de 250 ml - <strong>$55</strong></p>
       </div>
     </div>
+
+ <!-- Nueva tarjeta: Tamaños de Raspados de esencias -->
+
+ <div class="card" data-aos="fade-up">
+      <img src="https://www.progelcone.com/med/pr/3/0112730_1.jpg" alt="Raspados">
+      <div class="card-body">
+        <h3>Raspados de esencias</h3>
+        <p>Raspado de chicle 🍬</p>
+        <p>Raspado de coca🥤</p>
+        <p>Raspado de fresa🍓</p>
+        <p>Raspado de limon🍋‍</p>
+        <p>Raspado de piña🍍</p>
+        <p>Raspado de uva🍇</p>
+        
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body">
+        <h3>Raspados - Tamaños y Precios</h3>
+        <p>🥤 Raspado de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Raspado de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Raspado de 250 ml - <strong>$55</strong></p>
+      </div>
+    </div>
+
+ <!-- Nueva tarjeta: Tamaños de Raspados sabor natural -->
+
+<div class="card" data-aos="fade-up">
+      <img src="https://www.gastrolabweb.com/u/fotografias/fotosnoticias/2023/11/30/55132.jpg" alt="Raspados">
+      <div class="card-body">
+        <h3>Raspados sabores naturales</h3>
+        <p>Raspado de fresa🍓</p>
+        <p>Raspado de Mango🍋‍</p>
+        <p>Raspado de piña🍍</p>
+        <p>Raspado de uva🍇</p>
+        <p>Raspado de Guanabana</p>
+        <p>Raspado de Nance</p>
+        <p>Raspado de Nance curtido</p>
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body">
+        <h3>Raspados - Tamaños y Precios</h3>
+        <p>🥤 Raspado de 1 litro - <strong>$100</strong></p>
+        <p>🥤 Raspado de 1/2 litro - <strong>$75</strong></p>
+        <p>🥤 Raspado de 250 ml - <strong>$55</strong></p>
+      </div>
+    </div>
+
+
+
+
   </section>
 
-  
+
+
   <section class="testimonios">
     <h2> Nuestros clientes</h2>
     <p>“La mejores glorias de Balancán 😍” — Andrea R.</p>
@@ -278,10 +323,8 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
     const searchInput = document.getElementById('searchInput');
     const productCards = document.querySelectorAll('.card');
-
     searchInput.addEventListener('input', function () {
       const query = this.value.toLowerCase();
       productCards.forEach(card => {
