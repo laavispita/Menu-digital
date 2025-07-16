@@ -170,6 +170,30 @@
       </div>
     </div>
 
+
+<!-- Nueva tarjeta: Formulario de pedidos por Whatssapp -->
+
+    <div class="card" data-aos="fade-up">
+  <div class="card-body">
+    <h3>📲 Haz tu pedido</h3>
+    <label for="nombre">Tu nombre:</label>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+    <label for="tamano">Tamaño:</label>
+    <select id="tamano">
+      <option value="1 litro - $100">1 litro - $100</option>
+      <option value="1/2 litro - $75">1/2 litro - $75</option>
+      <option value="250 ml - $55">250 ml - $55</option>
+    </select>
+
+    <label for="fruta">Frutas y esencias:</label>
+    <textarea id="fruta" rows="3" placeholder="Ej: Mango, Fresa, Chicle, etc."></textarea>
+
+    <button onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
+  </div>
+</div>
+
+
     <div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Diablito - Tamaños y Precios</h3>
@@ -296,11 +320,7 @@
         <p>🥤 Raspado de 250 ml - <strong>$55</strong></p>
       </div>
     </div>
-
-
-
-
-  </section>
+ </section>
 
 
 
@@ -321,6 +341,7 @@
   </a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     AOS.init();
     const searchInput = document.getElementById('searchInput');
@@ -333,5 +354,23 @@
       });
     });
   </script>
+
+  <script>
+  function enviarPedido() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const tamano = document.getElementById('tamano').value;
+    const fruta = document.getElementById('fruta').value.trim();
+
+    if (!nombre || !fruta) {
+      alert("Por favor completa tu nombre y fruta/esencia.");
+      return;
+    }
+
+    const mensaje = `Hola, soy ${nombre}. Quiero pedir un Diablito de ${tamano}. Frutas y esencias: ${fruta}`;
+    const url = "https://wa.me/529341184667?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
+  }
+</script>
+
 </body>
 </html>
