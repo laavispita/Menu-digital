@@ -146,10 +146,51 @@
   </nav>
 
   <header>
-    <img src="https://img.freepik.com/vector-premium/avispa-dibujos-animados-vuelo-concepto-logotipo-insecto-linda-mascota-avispa-abeja_641602-588.jpg" alt="Logo La Avispita">
+ <img src="https://img.freepik.com/vector-premium/avispa-dibujos-animados-vuelo-concepto-logotipo-insecto-linda-mascota-avispa-abeja_641602-588.jpg" alt="Logo La Avispita">
     <h1>La Avispita</h1>
     <p>🐝"Delicias que pican"🐝</p>
+
+
+<div class="card" data-aos="fade-up">
+  <div class="card-body">
+    <h3>📲 Haz tu pedido</h3>
+
+    <label for="nombre">Tu nombre:</label><br>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre"><br><br>
+
+    <label for="cantidad">Cantidad:</label><br>
+    <select id="cantidad">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select><br><br>
+
+    <label for="tamano">Tamaño:</label><br>
+    <select id="tamano">
+      <option value="1 litro - $100">1 litro - $100</option>
+      <option value="1/2 litro - $75">1/2 litro - $75</option>
+      <option value="250 ml - $55">250 ml - $55</option>
+    </select><br><br>
+
+    <label for="fruta">Frutas y esencias:</label><br>
+    <textarea id="fruta" rows="3" placeholder="Ej: Mango, Fresa, Chicle, etc."></textarea><br><br>
+
+    <button onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
+  </div>
+</div>
+
+
+    
   </header>
+
+
+
+
+
+
+
 
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Buscar producto...">
@@ -173,25 +214,7 @@
 
 <!-- Nueva tarjeta: Formulario de pedidos por Whatssapp -->
 
-    <div class="card" data-aos="fade-up">
-  <div class="card-body">
-    <h3>📲 Haz tu pedido</h3>
-    <label for="nombre">Tu nombre:</label>
-    <input type="text" id="nombre" placeholder="Escribe tu nombre">
-
-    <label for="tamano">Tamaño:</label>
-    <select id="tamano">
-      <option value="1 litro - $100">1 litro - $100</option>
-      <option value="1/2 litro - $75">1/2 litro - $75</option>
-      <option value="250 ml - $55">250 ml - $55</option>
-    </select>
-
-    <label for="fruta">Frutas y esencias:</label>
-    <textarea id="fruta" rows="3" placeholder="Ej: Mango, Fresa, Chicle, etc."></textarea>
-
-    <button onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
-  </div>
-</div>
+    
 
 
     <div class="card" data-aos="fade-up">
@@ -359,6 +382,7 @@
   function enviarPedido() {
     const nombre = document.getElementById('nombre').value.trim();
     const tamano = document.getElementById('tamano').value;
+    const cantidad = document.getElementById('cantidad').value;
     const fruta = document.getElementById('fruta').value.trim();
 
     if (!nombre || !fruta) {
@@ -366,11 +390,10 @@
       return;
     }
 
-    const mensaje = `Hola, soy ${nombre}. Quiero pedir un Diablito de ${tamano}. Frutas y esencias: ${fruta}`;
+    const mensaje = `Hola, soy ${nombre}. Quiero pedir ${cantidad} Diablito(s) de ${tamano}. Frutas y esencias: ${fruta}`;
     const url = "https://wa.me/529341184667?text=" + encodeURIComponent(mensaje);
     window.open(url, "_blank");
   }
 </script>
-
 </body>
 </html>
