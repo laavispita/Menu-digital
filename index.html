@@ -173,6 +173,7 @@
         <option value="Raspados Naturales">Raspados Naturales</option>
         <option value="Chamoyadas Esencia">Chamoyadas Esencia</option>
         <option value="Chamoyada Naturales">Chamoyada Naturales</option>
+        <option value="Postres">Postres</option>
       </select>
     </div>
 
@@ -197,7 +198,8 @@
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
       <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="1 litro- $100">Dialito 1L - $100 MXN</option>
+
+        <option value="1 litro- $100">Diablito 1L - $100 MXN</option>
         <option value="1/2 litro - $75">Diablito 1/2L- $75 MXN</option>
         <option value="250 ml- $55">Diablito 250ml - $55 MXN</option>
 
@@ -212,13 +214,30 @@
         <option value="1 litro- $100">Frappes 1L - $100 MXN</option>
         <option value="1/2 litro - $75">Frappes 1/2L- $75 MXN</option>
         <option value="250 ml- $55">Frappes 250ml - $55 MXN</option>
-      </select>
-    </div>
 
-    <!-- Fruta / Esencia -->
+        <option value="250 ml- $55">Raspados de esencia 250 ml - $55 MXN</option>
+        <option value="250 ml- $55">Raspados de sabor natural 250 ml- $55 MXN</option>
+
+         <option value="250 ml- $55">Chamoyada de esencia 250 ml- $55 MXN</option>
+        <option value="250 ml- $55">Chamoyada de sabor natural 250 ml- $55 MXN</option>
+
+         <option value="Rebanada">Pay de queso - $40 MXN</option>
+         <option value="Rebanada">Pay de queso - $40 MXN  </option>
+        <option value="Rebanada"> Queso napolitano - $35 MXN </option>
+        <option value="Rebanada">Cupcakes de queso - $25  MXN</option>
+        <option value="Rebanada"> Cupcakes de chocolate- $20 MXN</option>
+        <option value="Rebanada"> Cupcakes de vainilla- $20 MXN</option>
+        <option value="Rebanada">Pastel imposbile- $50 MXN</option>
+        <option value="Rebanada">Gelatinas de mosaico - $25 MXN</option>
+     </select>
+    </div>
+    
+
+    <!-- Mnesaje donde el cliente describe como quiere su producto -->
+
     <div style="flex: 1 1 100%;">
-      <label>🍓 Frutas y esencias:</label><br>
-      <textarea id="fruta" rows="2" placeholder="Ej: Mango, Nance, Chicle" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+      <label> ❗Como lo quieres ❗</label><br>
+      <textarea id="fruta" rows="2" placeholder="Ejemp: Mango, Chicle, Esencia" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
     </div>
 
     <!-- Botón -->
@@ -234,6 +253,7 @@
 
 
 <!-- Nueva tarjeta: Aqui comienza la barra de busqueda de productos , por palabras claves, nombre compeltos -->
+
 <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Buscar producto...">
   </div>
@@ -242,7 +262,7 @@
  <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los  Diablitos -->
 
   <section class="products" id="productos">
-    <!-- Existing product cards... -->
+   
     <div class="card" data-aos="fade-up">
       <img src="https://pbs.twimg.com/media/D9wv4W5U4AEhVX-?format=jpg&name=large" alt="Diablitos">
       <div class="card-body">
@@ -321,6 +341,7 @@
         <p>🍪Frapuccino de Gallera oreo</p>
         <p>🍧Frapuccino de Fresa</p>
         <p>🧀Frapuccino de Queso de poro</p>
+         <p>🍫Frapuccino de Queso de vainilla</p>
       </div>
     </div>
 
@@ -361,9 +382,9 @@
         <p>Raspado de Nance curtido</p>
 
         <h3>Tamaños y Precios</h3>
-        <p>🥤 Chamoyadas de 250 ml- <strong>$25</strong></p>
-        <p>🥤 Chamoyadas de 1/2 litro - <strong>$35</strong></p>
-        <p>🥤 Chamoyadas de 1/2 litro - <strong>$60</strong></p>
+        <p>🥤 Raspados de 250 ml- <strong>$25</strong></p>
+        <p>🥤 Raspados de 1/2 litro - <strong>$35</strong></p>
+        <p>🥤 Raspados de 1/2 litro - <strong>$60</strong></p>
         <h4>Favor de especificar el tipo de esencia </h4>
       </div>
     </div>
@@ -372,7 +393,7 @@
 <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de las chamoyadas sabor esencia y sabor natural-->
 
 <div class="card" data-aos="fade-up">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdkJ_Za8fu6LQtNPRthBy_NIz-9EGy1jLljg&s" alt="Chamoyadas">
+      <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/12/f414x232-32021_45760_5050.jpg" alt="Chamoyadas">
       <div class="card-body">
         <h3>Chamoyada sabor Esencia</h3>
         <p>Chamoyadas de chicle🍬</p>
@@ -401,6 +422,38 @@
         <h4>Favor de especificar el tipo de esencia  </h4>
       </div>
  </div>
+
+<!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los prostres-->
+
+<div class="card" data-aos="fade-up">
+      <img src="https://www.steamycooker.com/wp-content/uploads/2020/08/flan-7-735x547.jpg" alt="Postres">
+      <div class="card-body">
+        <h3>postres</h3>
+        <p>Pay de queso🧀 </p>
+        <p>Queso napolitano🧀 </p>
+        <p>Cupcakes de queso 🧁</p>
+         <p>Cupcakes de chocolate🍫 </p>
+          <p>Cupcakes de vainilla </p>
+           <p>Pastel imposible🍩 </p>
+            <p>Gelatinas de mosaico🍮 </p>
+        
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body">
+        <h3>Precios</h3>
+        <p> Pay de queso - <strong>$40</strong></p>
+        <p> Queso napolitano - <strong>$35</strong></p>
+        <p> Cupcakes de queso 🧁- <strong>$25</strong></p>
+        <p> Cupcakes de chocolate🍫- <strong>$20</strong></p>
+        <p> Cupcakes de vainilla🍫- <strong>$20</strong></p>
+        <p> Pastel imposbile🍩- <strong>$50</strong></p>
+         <p> Gelatinas de mosaico🍮- <strong>$25</strong></p>
+
+        <h4>Precio por Rebanada</h4>
+      </div>
+    </div>
 </section>
 
 
