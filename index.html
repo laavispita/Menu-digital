@@ -159,13 +159,30 @@
 <div class="card" data-aos="fade-up" style="overflow-x: auto;">
   <div class="card-body" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; background: #fffbea; border-radius: 15px; padding: 1rem;">
     
-    <h3 style="width: 100%; text-align: center; color: #ff5722;">📲 Haz tu pedido</h3>
+    <h3 style="width: 100%; text-align: center; color: #ff5722;">📲 Haz tu pedido📲</h3>
 
+    <!-- Producto -->
+    <div style="flex: 1; min-width: 200px;">
+      <label>📋 Producto:</label><br>
+      <select id="producto" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="Diablitos">Diablitos</option>
+        <option value="Glorias">Glorias</option>
+        <option value="Sodas Italianas">Sodas Italianas</option>
+        <option value="Frappes">Frappes</option>
+        <option value="Raspados Esencia">Raspados Esencia</option>
+        <option value="Raspados Naturales">Raspados Naturales</option>
+        <option value="Chamoyadas Esencia">Chamoyadas Esencia</option>
+        <option value="Chamoyada Naturales">Chamoyada Naturales</option>
+      </select>
+    </div>
+
+    <!-- Nombre -->
     <div style="flex: 1; min-width: 200px;">
       <label>🧑 Tu nombre:</label><br>
       <input type="text" id="nombre" placeholder="Ej: Juan Pérez" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
     </div>
 
+    <!-- Cantidad -->
     <div style="flex: 1; min-width: 150px;">
       <label>🔢 Cantidad:</label><br>
       <select id="cantidad" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
@@ -173,24 +190,38 @@
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-        <option value="5">5</option>
       </select>
     </div>
 
+    <!-- Tamaño -->
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
       <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="1 litro - $100">1 litro - $100</option>
-        <option value="1/2 litro - $75">1/2 litro - $75</option>
-        <option value="250 ml - $55">250 ml - $55</option>
+        <option value="1 litro- $100">Dialito 1L - $100 MXN</option>
+        <option value="1/2 litro - $75">Diablito 1/2L- $75 MXN</option>
+        <option value="250 ml- $55">Diablito 250ml - $55 MXN</option>
+
+        <option value="1 litro- $100">Gloria 1L - $100 MXN</option>
+        <option value="1/2 litro - $75">Gloria 1/2L- $75 MXN</option>
+        <option value="250 ml- $55">Gloria 250ml - $55 MXN</option>
+
+        <option value="1 litro- $100">Sodas Italianas 1L - $100 MXN</option>
+        <option value="1/2 litro - $75">Sodas Italianas 1/2L- $75 MXN</option>
+        <option value="250 ml- $55">Sodas Italianas 250ml - $55 MXN</option>
+
+        <option value="1 litro- $100">Frappes 1L - $100 MXN</option>
+        <option value="1/2 litro - $75">Frappes 1/2L- $75 MXN</option>
+        <option value="250 ml- $55">Frappes 250ml - $55 MXN</option>
       </select>
     </div>
 
+    <!-- Fruta / Esencia -->
     <div style="flex: 1 1 100%;">
       <label>🍓 Frutas y esencias:</label><br>
       <textarea id="fruta" rows="2" placeholder="Ej: Mango, Nance, Chicle" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
     </div>
 
+    <!-- Botón -->
     <div style="flex: 1 1 100%; text-align: center;">
       <button onclick="enviarPedido()" style="padding: 10px 20px; background: #ffc107; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
         🟢 Enviar pedido por WhatsApp
@@ -198,6 +229,7 @@
     </div>
   </div>
 </div>
+
 </header>
 
 
@@ -411,22 +443,23 @@
     });
   </script>
 
+<!-- Nueva tarjeta: Este es unn Scrip que es parte del formulario de pedidos por Whatssap -->
   <script>
-  function enviarPedido() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const tamano = document.getElementById('tamano').value;
-    const cantidad = document.getElementById('cantidad').value;
-    const fruta = document.getElementById('fruta').value.trim();
+function enviarPedido() {
+  const producto = document.getElementById('producto').value;
+  const nombre = document.getElementById('nombre').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const tamano = document.getElementById('tamano').value;
+  const fruta = document.getElementById('fruta').value;
 
-    if (!nombre || !fruta) {
-      alert("Por favor completa tu nombre y fruta/esencia.");
-      return;
-    }
+  const mensaje = ` Hola, soy :${nombre}
+Quiero pedir: ${cantidad} ${producto}
+Tamaño: ${tamano}
+Frutas/Esencias: ${fruta}`;
 
-    const mensaje = `Hola, soy ${nombre}. Quiero pedir ${cantidad} Diablito(s) de ${tamano}. Descripcion del pedido: ${fruta}`;
-    const url = "https://wa.me/529341184667?text=" + encodeURIComponent(mensaje);
-    window.open(url, "_blank");
-  }
+  const url = `https://wa.me/529341184667?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
 </script>
 </body>
 </html>
