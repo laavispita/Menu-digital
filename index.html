@@ -140,10 +140,12 @@
   </style>
 </head>
 <body>
+  <!-- Nueva tarjeta: Aqui comienzan los botones de Menu -->
   <nav>
     <a href="#productos">Menú</a>
     <a href="#contacto">Contacto</a>
   </nav>
+<!-- Nueva tarjeta: Aqui comienza el encabezado de la Avispita-->
 
   <header>
  <img src="https://img.freepik.com/vector-premium/avispa-dibujos-animados-vuelo-concepto-logotipo-insecto-linda-mascota-avispa-abeja_641602-588.jpg" alt="Logo La Avispita">
@@ -151,9 +153,11 @@
     <p>🐝"Delicias que pican"🐝</p>
 
 
+<!-- Nueva tarjeta: Aqui comienza el formulario de pedidos por Whatssapp -->
+
 <div class="card" data-aos="fade-up">
   <div class="card-body">
-    <h3>📲 Haz tu pedido</h3>
+    <h3>📲 Haz tu pedido🛵</h3>
 
     <label for="nombre">Tu nombre:</label><br>
     <input type="text" id="nombre" placeholder="Escribe tu nombre"><br><br>
@@ -181,22 +185,14 @@
   </div>
 </div>
 
-
-    
-  </header>
+</header>
 
 
-
-
-
-
-
-
-  <div class="search-bar">
+<div class="search-bar">
     <input type="text" id="searchInput" placeholder="Buscar producto...">
   </div>
 
- <!-- Nueva tarjeta: Tamaños de Diablito -->
+ <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los  Diablitos -->
 
   <section class="products" id="productos">
     <!-- Existing product cards... -->
@@ -211,12 +207,6 @@
       </div>
     </div>
 
-
-<!-- Nueva tarjeta: Formulario de pedidos por Whatssapp -->
-
-    
-
-
     <div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Diablito - Tamaños y Precios</h3>
@@ -226,7 +216,7 @@
       </div>
     </div>
 
- <!-- Nueva tarjeta: Tamaños de Glorias -->
+ <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Glorias -->
 
 <div class="card" data-aos="fade-up">
       <img src="https://i.blogs.es/860e47/dap-1-32-/1366_2000.jpg" alt="Glorias">
@@ -249,7 +239,7 @@
       </div>
     </div>
 
- <!-- Nueva tarjeta: Tamaños de Sodas -->
+<!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los  Sodas Italianas -->
 
 <div class="card" data-aos="fade-up">
       <img src="https://losmilagrosdedalila.com/wp-content/uploads/2017/04/SODA-ITALIANA-FRESA-9715.jpg" alt="Sodas">
@@ -271,7 +261,7 @@
 
 
 
-    <!-- Nueva tarjeta: Tamaños de Frappes -->
+   <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los frappes -->
 
     <div class="card" data-aos="fade-up">
       <img src="https://i0.wp.com/www.buenossaborespanama.com/wp-content/uploads/2020/09/867-scaled.jpg?fit=1709%2C2560&ssl=1" alt="Frappes">
@@ -294,7 +284,7 @@
       </div>
     </div>
 
- <!-- Nueva tarjeta: Tamaños de Raspados de esencias -->
+ <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Raspados de esencias -->
 
  <div class="card" data-aos="fade-up">
       <img src="https://www.progelcone.com/med/pr/3/0112730_1.jpg" alt="Raspados">
@@ -319,7 +309,7 @@
       </div>
     </div>
 
- <!-- Nueva tarjeta: Tamaños de Raspados sabor natural -->
+ <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Raspados Naturales -->
 
 <div class="card" data-aos="fade-up">
       <img src="https://www.gastrolabweb.com/u/fotografias/fotosnoticias/2023/11/30/55132.jpg" alt="Raspados">
@@ -346,6 +336,7 @@
  </section>
 
 
+<!-- Nueva tarjeta: Aqui comienza la seccion de coemntarios del los clientes -->
 
   <section class="testimonios">
     <h2> Nuestros clientes</h2>
@@ -353,11 +344,15 @@
     <p>“Todo delicioso😍 y buena atención, súper recomendado” — Luis M.</p>
   </section>
 
+<!-- Nueva tarjeta: Aqui comienza los horarios, ubicacion , Redes sociales -->
+
   <footer id="contacto">
     <p>📍 Balancán, Tabasco📍<br>🕒 Miércoles a Lunes, 3:00 PM - 10:00 PM</p>
     <p><a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">Ver ubicación en Google Maps</a></p>
     <p><a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">Síguenos en Facebook</a></p>
   </footer>
+
+<!-- Nueva tarjeta: Aqui comienza el boton flotante de Whatssapp -->
 
   <a href="https://wa.me/529341184667" class="whatsapp-btn" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -390,7 +385,7 @@
       return;
     }
 
-    const mensaje = `Hola, soy ${nombre}. Quiero pedir ${cantidad} Diablito(s) de ${tamano}. Frutas y esencias: ${fruta}`;
+    const mensaje = `Hola, soy ${nombre}. Quiero pedir ${cantidad} Diablito(s) de ${tamano}. Descripcion del pedido: ${fruta}`;
     const url = "https://wa.me/529341184667?text=" + encodeURIComponent(mensaje);
     window.open(url, "_blank");
   }
