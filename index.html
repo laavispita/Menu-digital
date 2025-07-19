@@ -129,14 +129,24 @@
       color: var(--primary-color);
       text-decoration: none;
     }
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    .whatsapp-btn img { width: 60px; }
-  </style>
+    .facebook-btn {
+  position: fixed;
+  bottom: 90px; /* más arriba que el de WhatsApp */
+  right: 20px;
+  z-index: 1000;
+}
+
+.facebook-btn img {
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.facebook-btn img:hover {
+  transform: scale(1.1);
+}
+</style>
 </head>
 <body>
   <!-- Nueva tarjeta: Aqui comienzan los botones de Menu -->
@@ -159,7 +169,6 @@
   <div class="card-body" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; background: #fffbea; border-radius: 15px; padding: 1rem;">
     
     <h3 style="width: 100%; text-align: center; color: #ff5722;">📲 Haz tu pedido📲</h3>
-
 
 
    <!-- Nueva tarjeta: Aqui van la lista de los productos que se venden -->
@@ -252,7 +261,6 @@
      </select>
     </div>
     
-
     <!-- Mensaje donde el cliente describe como quiere su producto -->
 
     <div style="flex: 1 1 100%;">
@@ -309,7 +317,6 @@
       </div>
     </div>
 
-
  <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Glorias -->
 
 <div class="card" data-aos="fade-up">
@@ -323,7 +330,6 @@
       </div>
     </div>
 
- 
     <div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Tamaños y Precios</h3>
@@ -355,8 +361,6 @@
         <h4>Favor de especificar el sabor </h4>
       </div>
     </div>
-
-
 
    <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los frappes -->
 
@@ -501,20 +505,20 @@
   <footer id="contacto">
 
     <p>🗼Mercado Nuevo CETRAM Balancán, Tabasco<br>
-    🕒Horarios de atencion de Miércoles a Lunes, 3:00 PM - 10:00 PM</p>
+    🕒Lunes a Domingo de : 3:00 p.m - 10:00 p.m </p>
     <p><a href="https://maps.app.goo.gl/33QvLREwN4STD8JS7" target="_blank">Ver ubicación en Google Maps</a></p>
-    <p><a href="https://www.facebook.com/share/1CA2ZMbaG8/" target="_blank">Síguenos en Facebook</a></p>
   </footer>
 
-<!-- Nueva tarjeta: Aqui comienza el boton flotante de Whatssapp -->
+<!-- Nueva tarjeta: Aqui comienza Botón flotante de Facebook -->-->
+ 
+<a href="https://www.facebook.com/share/1CA2ZMbaG8/" class="facebook-btn" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook" />
+</a>
 
-  <a href="https://wa.me/529341184667" class="whatsapp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
+<!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
     AOS.init();
     const searchInput = document.getElementById('searchInput');
     const productCards = document.querySelectorAll('.card');
@@ -527,8 +531,6 @@
     });
   </script>
 
-
-<!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
 <!-- Nueva tarjeta: Este es un Scrip que es parte del formulario de pedidos por Whatssap -->
 
   <script>
