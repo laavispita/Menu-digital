@@ -268,7 +268,6 @@
     </div>
   </div>
 </div>
-
 </header>
 
 
@@ -586,7 +585,6 @@
     });
   });
 
-  // Inicializar el campo "Tamaño" según el producto seleccionado por defecto
   const productoSeleccionado = productoSelect.value;
   const tamaños = productos[productoSeleccionado];
   tamanoSelect.innerHTML = "";
@@ -596,6 +594,35 @@
     option.text = tamaño;
     tamanoSelect.appendChild(option);
   });
+</script>
+
+
+<!-- Nueva tarjeta: Este es un Scrip que valida el pedido antes de ser enviado por whatssap -->
+<script>
+  function enviarPedido() {
+    const producto = document.getElementById('producto').value;
+    const nombre = document.getElementById('nombre').value.trim(); // quitamos espacios
+    const cantidad = document.getElementById('cantidad').value;
+    const tamano = document.getElementById('tamano').value;
+    const fruta = document.getElementById('fruta').value;
+
+    // Validación: que el nombre no esté vacío
+    if (nombre === "") {
+      alert("⚠️ Por favor, escribe tu nombre antes de enviar el pedido⚠️");
+      document.getElementById('nombre').focus(); // enfoca el campo
+      return; // detenemos el envío
+    }
+
+    const mensaje = `Hola, soy: ${nombre}
+Quiero pedir: ${cantidad} ${producto}
+Tamaño: ${tamano}
+Describe tu producto: ${fruta}`;
+
+    const numero = '529341184667'; // Número de WhatsApp
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
 </script>
 </body>
 </html>
