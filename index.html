@@ -280,6 +280,10 @@
      🛒Agregar carrito
   </button>
 
+  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #f44336; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    🧹 Vaciar carrito
+  </button>
+
   <button onclick="enviarCarrito()" style="padding: 10px 20px; margin: 5px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold;">
     🟢 Enviar pedido completo por WhatsApp
   </button>
@@ -634,6 +638,12 @@
     const item = document.createElement('li');
     item.textContent = texto;
     lista.appendChild(item);
+  }
+
+   function vaciarCarrito() {
+  pedidos.length = 0; // vacía el array
+  const lista = document.getElementById('listaPedidos');
+  lista.innerHTML = ''; // borra lo que se ve en la lista
   }
 
   function enviarCarrito() {
