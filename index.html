@@ -260,13 +260,22 @@
       <textarea id="fruta" rows="2" placeholder="Ejemplo: combinacion de sabores o frutas" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
     </div>
 
-     <!-- Nueva tarjeta: Aqui va la parte del boton donde el usuario envia su pedido -->
-    <div style="flex: 1 1 100%; text-align: center;">
-      <button onclick="enviarPedido()" style="padding: 10px 20px; background: #ffc107; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
-        🟢 Enviar pedido por WhatsApp
-      </button>
-    </div>
-  </div>
+
+<!-- Este codigo arma la lista de un carrito de pedidos y se envia todo por whatssap -->
+
+<div id="carrito" style="padding: 1rem; max-width: 800px; margin: auto;">
+  <h3>🧾 Tu pedido:</h3>
+  <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
+
+<div style="text-align: center; margin: 1rem;">
+  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #00bcd4; color: white; border: none; border-radius: 8px; font-weight: bold;">
+     🛒Agregar carrito
+  </button>
+
+  <button onclick="enviarCarrito()" style="padding: 10px 20px; margin: 5px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    🟢 Enviar pedido completo por WhatsApp
+  </button>
+</div>
 </div>
 </header>
 
@@ -357,10 +366,10 @@
         <h3>Frappes</h3>
         <p>🍫Frapuccino de Moka</p>
         <p>🧁Frapuccino de Magnum</p>
-        <p>🍪Frapuccino de Gallera oreo</p>
+        <p>🍪Frapuccino de Galleta oreo</p>
         <p>🍧Frapuccino de Fresa</p>
         <p>🧀Frapuccino de Queso de poro</p>
-         <p>🍫Frapuccino de Queso de vainilla</p>
+         <p>🍫Frapuccino de vainilla</p>
       </div>
     </div>
 
@@ -440,6 +449,7 @@
         <p>🥤 Chamoyadas de 250 ml- <strong>$25</strong></p>
         <p>🥤 Chamoyadas de 1/2 litro - <strong>$35</strong></p>
         <p>🥤 Chamoyadas de 1/2 litro - <strong>$60</strong></p>
+
         <h4>Favor de especificar el tipo de esencia  </h4>
       </div>
  </div>
@@ -518,6 +528,7 @@
   </script>
 
 
+<!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
 <!-- Nueva tarjeta: Este es un Scrip que es parte del formulario de pedidos por Whatssap -->
 
   <script>
@@ -596,30 +607,51 @@
   });
 </script>
 
+<!-- Nueva tarjeta: Este es un Scrip que se arme un carrito con direntes productos y se envie por whatssap -->
 
-<!-- Nueva tarjeta: Este es un Scrip que valida el pedido antes de ser enviado por whatssap -->
 <script>
-  function enviarPedido() {
+  const pedidos = [];
+
+  function agregarAlCarrito() {
     const producto = document.getElementById('producto').value;
-    const nombre = document.getElementById('nombre').value.trim(); // quitamos espacios
     const cantidad = document.getElementById('cantidad').value;
     const tamano = document.getElementById('tamano').value;
     const fruta = document.getElementById('fruta').value;
+    const nombre = document.getElementById('nombre').value.trim();
 
-    // Validación: que el nombre no esté vacío
     if (nombre === "") {
-      alert("⚠️ Por favor, escribe tu nombre antes de enviar el pedido⚠️");
-      document.getElementById('nombre').focus(); // enfoca el campo
-      return; // detenemos el envío
+      alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
+      document.getElementById('nombre').focus();
+      return;
     }
 
-    const mensaje = `Buenas, le escribe: ${nombre}
-Quiero pedir: ${cantidad} ${producto}
-Tamaño: ${tamano}
-Descripcion: ${fruta}`;
+    const texto = `✅ ${cantidad} ${producto} - ${tamano} - ${fruta}`;
+    pedidos.push(texto);
 
-    const numero = '529341184667'; // Número de WhatsApp
+    const lista = document.getElementById('listaPedidos');
+    const item = document.createElement('li');
+    item.textContent = texto;
+    lista.appendChild(item);
+  }
 
+  function enviarCarrito() {
+    const nombre = document.getElementById('nombre').value.trim();
+
+    if (nombre === "") {
+      alert("⚠️ Escribe tu nombre antes de enviar el pedido.");
+      document.getElementById('nombre').focus();
+      return;
+    }
+
+    if (pedidos.length === 0) {
+      alert("🛒 Agrega al menos un producto al carrito.");
+      return;
+    }
+
+    let mensaje = `Hola, soy: ${nombre}\nQuiero pedir:\n`;
+    mensaje += pedidos.join('\n');
+
+    const numero = '529341184667';
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
   }
