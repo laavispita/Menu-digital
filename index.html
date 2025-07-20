@@ -146,10 +146,32 @@
 .facebook-btn img:hover {
   transform: scale(1.1);
 }
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto clic */
+button:active {
+  transform: scale(0.95);
+}
 </style>
 </head>
+
+
+<!-- Nueva tarjeta: Aqui comienza el encabezado y los botones del Menu -->
 <body>
-  <!-- Nueva tarjeta: Aqui comienza el encabezado y los botones del Menu -->
   <nav>
     <a href="#productos">Menú Avispita</a>
     <a href="#contacto">Contacto</a>
@@ -169,15 +191,16 @@
     <div style="flex: 1; min-width: 200px;">
       <label>📋 Producto:</label><br>
       <select id="producto" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="Diablitos">Diablitos</option>
-        <option value="Glorias">Glorias</option>
-        <option value="Sodas Italianas">Sodas Italianas</option>
-        <option value="Frappes">Frappes</option>
-        <option value="Raspados Esencia">Raspados Esencia</option>
+        <option value="Diablito">Diablito</option>
+        <option value="Gloria">Gloria</option>
+        <option value="Soda Italiana">Soda Italiana</option>
+        <option value="Frappe">Frappe</option>
+        <option value="Raspados de Esencia">Raspados de Esencia</option>
         <option value="Raspados Naturales">Raspados Naturales</option>
-        <option value="Chamoyadas Esencia">Chamoyadas Esencia</option>
+        <option value="Chamoyadas de Esencia">Chamoyadas de Esencia</option>
         <option value="Chamoyadas Naturales">Chamoyadas Naturales</option>
-        <option value="Postres">Postres</option>
+        <option value="Postre">Postre</option>
+        <option value="Refresco">Refresco</option>
       </select>
     </div>
 
@@ -208,8 +231,8 @@
     <!-- Mensaje donde el cliente describe como quiere su producto -->
 
     <div style="flex: 1 1 100%;">
-      <label> 🧁Como lo quieres🧁</label><br>
-      <textarea id="fruta" rows="2" placeholder="Aqui puedes pedir: combinacion de sabores o frutas, postres, refresco ect." style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+      <label> 🧁Como lo quieres🥤</label><br>
+      <textarea id="fruta" rows="2" placeholder="Si tu pedido tiene combinaciones comenta aqui 👇" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
     </div>
 
 
@@ -220,16 +243,16 @@
   <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
 
 <div style="text-align: center; margin: 1rem;">
-  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #00bcd4; color: white; border: none; border-radius: 8px; font-weight: bold;">
-     🛒Agregar carrito
+  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #ff5722; color: white; border: none; border-radius: 8px; font-weight: bold;">
+     🉑 Agregar
   </button>
 
-  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #f44336; color: white; border: none; border-radius: 8px; font-weight: bold;">
-    🧹 Vaciar carrito
+  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #00695c; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    🧹 Vaciar
   </button>
 
-  <button onclick="enviarCarrito()" style="padding: 10px 20px; margin: 5px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold;">
-    🟢 Enviar pedido completo por WhatsApp
+  <button onclick="enviarCarrito()" style="padding: 10px 20px; margin: 5px; background: #000000; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    📲 Enviar 
   </button>
 </div>
 </div>
@@ -488,43 +511,43 @@
 
   <script>
   const productos = {
-    "Diablitos": [
+    "Diablito": [
       "Vaso N° 12- $60 MXN",
       "Vaso N° 16- $80 MXN",
       "Vaso N° 32- $100 MXN"
     ],
-    "Glorias": [
+    "Gloria": [
       "Vaso N° 12- $60 MXN",
       "Vaso N° 16- $80 MXN",
       "Vaso N° 32- $100 MXN"
     ],
 
-    "Sodas Italianas": [
-      "Soda Italianas - $ 55 MXN",
+    "Soda Italiana": [
+      "Sabor fresa - $ 55 MXN",
+      "Sabor manzana verde - $ 55 MXN",
+      "Sabor mora - $ 55 MXN",
       "Strawberry Milk - $ 65 MXN ",
       "Bluberry Milk - $ 65 MXN ",
-      "Refrescos de sabores - $ 25 MXN ",
-      "Agua embotellada - $ 25 MXN ",
       
     ],
-    "Frappes": [
-      "Frapiccino de vainilla - $ 60 MXN",
-      "Frapiccino de moka - $ 60 MXN",
-      "Frapiccino de oreo - $ 65 MXN",
-      "Frapiccino de taro - $ 65 XN",
-      "Frapiccino de matcha - $ 65 MXN",
-      "Frapiccino de fresa - $ 70 MXN",
-      "Frapiccino de chicle - $ 70 MXN",
-      "Frapiccino de mazapan - $ 70 MXN",
-      "Frapiccino de gansito - $ 75 MXN",
-      "Frapiccino de nutela - $ 75 MXN",
-      "Frapiccino de ferrero rocher - $ 130 MXN",
-      "Frapiccino de magnum - $ 150 MXN",
-      "Frapiccino de pozol con cacao - $ 80 MXN",
-      "Frapiccino de queso de poro - $ 100 MXN",
+    "Frappe": [
+      "de vainilla - $ 60 MXN",
+      "de moka - $ 60 MXN",
+      "de oreo - $ 65 MXN",
+      "de taro - $ 65 XN",
+      "de matcha - $ 65 MXN",
+      "de fresa - $ 70 MXN",
+      "de chicle - $ 70 MXN",
+      "de mazapan - $ 70 MXN",
+      "de gansito - $ 75 MXN",
+      "de nutela - $ 75 MXN",
+      "de ferrero rocher - $ 130 MXN",
+      "de magnum - $ 150 MXN",
+      "de pozol con cacao - $ 80 MXN",
+      "de queso de poro - $ 100 MXN",
       
     ],
- "Raspados Esencia": [
+ "Raspados de Esencia": [
       "Vaso N° 10- $15 MXN",
       "Vaso N° 12- $25 MXN",
       "Vaso N° 14- $35 MXN",
@@ -539,7 +562,7 @@
       "Vaso N° 32- $70 MXN",
       
     ],
- "Chamoyadas Esencia": [
+ "Chamoyadas de Esencia": [
       "Vaso N° 10- $25 MXN",
       "Vaso N° 12- $35 MXN",
       "Vaso N° 14- $45 MXN",
@@ -553,14 +576,18 @@
       "Vaso N° 16- $60 MXN",
       "Vaso N° 32- $80 MXN",
     ],
-    "Postres": [
+    "Postre": [
       "Pay de queso - $40 MXN",
       "Queso napolitano - $35 MXN",
       "Pastel imposble - $50 MXN",
       "Gelatina de mosaico - $25 MXN",
       "Gelatina de oreo - $35 MXN",
       
-    ],  
+    ],
+    "Refresco": [
+      "Agua embotellada 600 ml- $25 MXN",
+      "Chivacola 600 ml- $25 MXN",
+    ],    
  };
 
   const productoSelect = document.getElementById("producto");
