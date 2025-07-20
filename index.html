@@ -149,19 +149,14 @@
 </style>
 </head>
 <body>
-  <!-- Nueva tarjeta: Aqui comienzan los botones de Menu -->
+  <!-- Nueva tarjeta: Aqui comienza el encabezado y los botones del Menu -->
   <nav>
     <a href="#productos">Menú Avispita</a>
     <a href="#contacto">Contacto</a>
   </nav>
 
-<!-- Nueva tarjeta: Aqui comienza el encabezado de la Avispita-->
-
-  <header>
- 
-
-
-<!-- Nueva tarjeta: Aqui comienza el formulario de pedidos por Whatssapp -->
+ <header>
+ <!-- Nueva tarjeta: Aqui comienza el formulario de pedidos por Whatssapp -->
 
 <div class="card" data-aos="fade-up" style="overflow-x: auto;">
   <div class="card-body" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; background: #fffbea; border-radius: 15px; padding: 1rem;">
@@ -189,7 +184,7 @@
      <!-- Nueva tarjeta: Aqui va el nombre del usuario -->
     <div style="flex: 1; min-width: 200px;">
       <label>🧑 Tu nombre:</label><br>
-      <input type="text" id="nombre" placeholder="Ej: Juan Pérez" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="text" id="nombre" placeholder="Ejmplo: Isabel" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
     </div>
 
      <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario quiera agregar-->
@@ -207,55 +202,6 @@
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
       <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de los diblitos -->
-        <option value="1 litro- $100">  </option>
-        <option value="1/2 litro - $75">  </option>
-        <option value="250 ml- $55">  </option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de las glorias -->
-        <option value="1 litro- $100"> </option>
-        <option value="1/2 litro - $75"> </option>
-        <option value="250 ml- $55"></option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de las sodas -->
-        <option value="1 litro- $80"> </option>
-        <option value="1/2 litro - $75"></option>
-        <option value="250 ml- $55">S</option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de las frappes -->
-        <option value="1 litro- $100"></option>
-        <option value="1/2 litro - $75"> </option>
-        <option value="250 ml- $55"></option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de los raspados de esencia -->
-        <option value="250 ml- $55"> </option>
-        <option value="250 ml- $55"> </option>
-         <option value="250 ml- $55"> </option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de los raspados de Naturales -->
-        <option value="250 ml- $55"></option>
-        <option value="250 ml- $55"></option>
-         <option value="250 ml- $55"> </option>
-
- <!-- Nueva tarjeta: Aqui van los tamaños y precios de las chamoyadas de esencias -->
-        <option value="250 ml- $55"></option>
-        <option value="250 ml- $55"></option>
-         <option value="250 ml- $55"> </option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de las chamoyas naturales -->
-        <option value="250 ml- $55"></option>
-        <option value="250 ml- $55"></option>
-         <option value="250 ml- $55"> </option>
-
-<!-- Nueva tarjeta: Aqui van los tamaños y precios de las chamoyas naturales -->
-        <option value="Pay de queso - $40 MXN"></option>
-        <option value="Queso napolitano - $35 MXN">  </option>
-        <option value="Cupcakes de queso - $25  MXN"></option>
-        <option value="Cupcakes de chocolate- $20 MXN"> </option>
-        <option value="Cupcakes de vainilla- $20 MXN"> </option>
-        <option value="Pastel imposbile- $50 MXN"></option>
-        <option value="Gelatinas de mosaico - $25 MXN"></option>
      </select>
     </div>
     
@@ -263,7 +209,7 @@
 
     <div style="flex: 1 1 100%;">
       <label> 🧁Como lo quieres🧁</label><br>
-      <textarea id="fruta" rows="2" placeholder="Ejemplo: combinacion de sabores o frutas" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+      <textarea id="fruta" rows="2" placeholder="Aqui puedes pedir: combinacion de sabores o frutas, postres, refresco ect.." style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
     </div>
 
 
@@ -492,10 +438,6 @@
       </div>
     </div>
 </section>
-
-
-<!-- Nueva tarjeta: Aqui comienza la seccion de comentarios del los clientes -->
-
   
 <!-- Nueva tarjeta: Aqui comienza los horarios, ubicacion , Redes sociales -->
 
@@ -531,49 +473,77 @@
   <script>
   const productos = {
     "Diablitos": [
-      "1 litro - $100",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Vaso N° 12- $60 MXN",
+      "Vaso N° 16- $80 MXN",
+      "Vaso N° 32- $100 MXN"
     ],
     "Glorias": [
-      "1 litro - $90",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Vaso N° 12- $60 MXN",
+      "Vaso N° 16- $80 MXN",
+      "Vaso N° 32- $100 MXN"
     ],
 
     "Sodas Italianas": [
-      "1 litro - $70",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Soda Italianas - $ 55 MXN",
+      "Strawberry Milk - $ 65 MXN ",
+      "Bluberry Milk - $ 65 MXN ",
+      "Refrescos de sabores - $ 25 MXN ",
+      "Agua ciel - $ 25 MXN ",
+      
     ],
     "Frappes": [
-      "1 litro - $60",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Frapiccino de vainilla - $ 60 MXN",
+      "Frapiccino de moka - $ 60 MXN",
+      "Frapiccino de oreo - $ 65 MXN",
+      "Frapiccino de taro - $ 65 XN",
+      "Frapiccino de matcha - $ 65 MXN",
+      "Frapiccino de fresa - $ 70 MXN",
+      "Frapiccino de chicle - $ 70 MXN",
+      "Frapiccino de mazapan - $ 70 MXN",
+      "Frapiccino de gansito - $ 75 MXN",
+      "Frapiccino de nutela - $ 75 MXN",
+      "Frapiccino de ferrero rocher - $ 130 MXN",
+      "Frapiccino de magnum - $ 150 MXN",
+      "Frapiccino de pozol con cacao - $ 80 MXN",
+      "Frapiccino de queso de poro - $ 100 MXN",
+      
     ],
  "Raspados Esencia": [
-      "1 litro - $15",
-      "1/2 litro - $20",
-      "250 ml - $25"
+      "Vaso N° 10- $15 MXN",
+      "Vaso N° 12- $25 MXN",
+      "Vaso N° 14- $35 MXN",
+      "Vaso N° 16- $50 MXN",
+      "Vaso N° 32- $70 MXN",
     ],
  "Raspados Naturales": [
-      "1 litro - $15",
-      "1/2 litro - $25",
-      "250 ml - $35"
+      "Vaso N° 10- $15 MXN",
+      "Vaso N° 12- $25 MXN",
+      "Vaso N° 14- $35 MXN",
+      "Vaso N° 16- $50 MXN",
+      "Vaso N° 32- $70 MXN",
+      
     ],
  "Chamoyadas Esencia": [
-      "1 litro - $55",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Vaso N° 10- $25 MXN",
+      "Vaso N° 12- $35 MXN",
+      "Vaso N° 14- $45 MXN",
+      "Vaso N° 16- $60 MXN",
+      "Vaso N° 32- $80 MXN",
     ],
     "Chamoyadas Naturales": [
-      "1 litro - $55",
-      "1/2 litro - $75",
-      "250 ml - $55"
+      "Vaso N° 10- $25 MXN",
+      "Vaso N° 12- $35 MXN",
+      "Vaso N° 14- $45 MXN",
+      "Vaso N° 16- $60 MXN",
+      "Vaso N° 32- $80 MXN",
     ],
     "Postres": [
-      "Pay de queso - $55",
-      "Queso napolitano - $75",
+      "Pay de queso - $40 MXN",
+      "Queso napolitano - $35 MXN",
+      "Pastel imposble - $50 MXN",
+      "Gelatina de mosaico - $25 MXN",
+      "Gelatina de oreo - $35 MXN",
+      
     ],  
  };
 
@@ -604,7 +574,7 @@
   });
 </script>
 
-<!-- Nueva tarjeta: Este es un Scrip que se arme un carrito con direntes productos y se envie por whatssap -->
+<!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
 
 <script>
   const pedidos = [];
