@@ -188,6 +188,39 @@ button:active {
   font-style: italic;
 }
 
+.ver-carrito-btn {
+  position: fixed;
+  bottom: 200px;
+  right: 20px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.ver-carrito-btn:hover {
+  transform: scale(1.05);
+}
+
+.resumen-pedido {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  padding: 15px;
+  z-index: 999;
+}
+
 </style>
 </head>
 <!-- Nueva tarjeta: Aqui Terminan los estilos CSS  de la pagina y comienzas los codigos HTML -->
@@ -266,7 +299,7 @@ button:active {
 
 <div style="text-align: center; margin: 1rem;">
   <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #ff5722; color: white; border: none; border-radius: 8px; font-weight: bold;">
-     🉑 Agregar
+     🛒 Agregar
   </button>
 
   <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #45e512; color: white; border: none; border-radius: 8px; font-weight: bold;">
@@ -643,33 +676,38 @@ button:active {
 <!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
 
 <script>
-  const pedidos = [];
-
+  const pedidos = []; // asegúrate que esto va arriba
   function agregarAlCarrito() {
-    const producto = document.getElementById('producto').value;
-    const cantidad = document.getElementById('cantidad').value;
-    const tamano = document.getElementById('tamano').value;
-    const fruta = document.getElementById('fruta').value;
-    const nombre = document.getElementById('nombre').value.trim();
+  const producto = document.getElementById('producto').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const tamano = document.getElementById('tamano').value;
+  const fruta = document.getElementById('fruta').value;
+  const nombre = document.getElementById('nombre').value.trim();
 
-    if (nombre === "") {
-      alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
-      document.getElementById('nombre').focus();
-      return;
-    }
-
-    const texto = `✅ ${cantidad} ${producto} - ${tamano} - ${fruta}`;
-    pedidos.push(texto);
-
-    const lista = document.getElementById('listaPedidos');
-    const item = document.createElement('li');
-    item.textContent = texto;
-    lista.appendChild(item);
-    document.getElementById('fruta').value = "";
-
+  if (nombre === "") {
+    alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
+    document.getElementById('nombre').focus();
+    return;
   }
 
-   function vaciarCarrito() {
+  const texto = `${cantidad} ${producto} - ${tamano} - ${fruta}`;
+
+  const match = tamano.match(/\$ ?(\d+)/);
+  const precio = match ? parseInt(match[1]) * parseInt(cantidad) : 0;
+
+  pedidos.push({ texto, precio }); // 👈 así debe ir
+
+  const lista = document.getElementById('listaPedidos');
+  const item = document.createElement('li');
+  item.textContent = `✅ ${texto}`;
+  lista.appendChild(item);
+
+  document.getElementById('fruta').value = "";
+
+  console.log("Pedido agregado:", pedidos);
+}
+
+  function vaciarCarrito() {
   pedidos.length = 0; // vacía el array
   const lista = document.getElementById('listaPedidos');
   lista.innerHTML = ''; // borra lo que se ve en la lista
@@ -697,6 +735,38 @@ button:active {
     window.open(url, '_blank');
   }
 </script>
+
+<script>
+function mostrarResumenPedido() {
+  const lista = document.getElementById('listaResumen');
+  const totalText = document.getElementById('totalPagar');
+  lista.innerHTML = '';
+  let total = 0;
+
+  pedidos.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item.texto;
+    lista.appendChild(li);
+    total += item.precio;
+  });
+
+  totalText.textContent = `$${total} MXN`;
+  document.getElementById('resumenPedido').style.display = 'block';
+}
+
+function cerrarResumen() {
+  document.getElementById('resumenPedido').style.display = 'none';
+}
+</script>
+
+<!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
+<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">🛒 Ver lista</button>
+<div id="resumenPedido" class="resumen-pedido">
+  <h3>🧾 Tu pedido:</h3>
+  <ul id="listaResumen" style="padding-left: 1rem;"></ul>
+  <p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
+  <button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
+</div>
 </body>
 </html>
 
