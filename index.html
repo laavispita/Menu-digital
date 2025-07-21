@@ -220,10 +220,11 @@ button:active {
   padding: 15px;
   z-index: 999;
 }
-
 </style>
 </head>
 <!-- Nueva tarjeta: Aqui Terminan los estilos CSS  de la pagina y comienzas los codigos HTML -->
+
+
 
 <!-- Nueva tarjeta: Aqui comienza el encabezado y los botones del Menu -->
 <body>
@@ -546,7 +547,23 @@ button:active {
 </a>
 
 
+<!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
+
+<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">🛒 ver carrito</button>
+<div id="resumenPedido" class="resumen-pedido">
+  <h3>🧾 Tu pedido:</h3>
+  <ul id="listaResumen" style="padding-left: 1rem;"></ul>
+  <p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
+
+  <button onclick="enviarResumenPorWhatsApp()" style="margin-top:10px; background: #25D366; color:white; border:none; padding:6px 12px; border-radius:6px;">
+  📲 WhatsApp
+</button>
+
+  <button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
+
+
 <!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
@@ -786,21 +803,8 @@ function enviarResumenPorWhatsApp() {
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+
 </script>
-
-<!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
-<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">🛒 ver carrito</button>
-<div id="resumenPedido" class="resumen-pedido">
-  <h3>🧾 Tu pedido:</h3>
-  <ul id="listaResumen" style="padding-left: 1rem;"></ul>
-  <p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
-
-  <button onclick="enviarResumenPorWhatsApp()" style="margin-top:10px; background: #25D366; color:white; border:none; padding:6px 12px; border-radius:6px;">
-  📲 WhatsApp
-</button>
-
-  <button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
-</div>
 </body>
 </html>
 
