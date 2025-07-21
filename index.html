@@ -149,7 +149,7 @@ button:active {
 .tarjeta-bancaria {
   width: 340px;
   height: 200px;
-  background: linear-gradient(135deg, #c7b40e, #2454a6);
+  background: linear-gradient(135deg, #2454a6, #2454a6);
   color: white;
   border-radius: 16px;
   padding: 20px;
@@ -304,10 +304,6 @@ button:active {
 
   <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #45e512; color: white; border: none; border-radius: 8px; font-weight: bold;">
     🧹 Vaciar
-  </button>
-
-  <button onclick="enviarCarrito()" style="padding: 10px 20px; margin: 5px; background: #0ea1e6; color: white; border: none; border-radius: 8px; font-weight: bold;">
-    📲 Enviar 
   </button>
 </div>
 </div>
@@ -528,7 +524,8 @@ button:active {
 <!-- Nueva tarjeta: Aqui comienza la tarjeta digital para compras y tambien los horarios, ubicacion , Redes sociales -->
 
   <footer id="contacto">
-   <h3>💳Forma de pagos transferencia Electronica💳</h3>
+   <h3>Forma de pago</h3>
+   <h7>💳transferencia Electronica💳</h7>
   <div class="tarjeta-bancaria">
   <img class="chip" src="https://png.pngtree.com/png-clipart/20240711/original/pngtree-creditcard-chip-business-chip-detail-photo-png-image_15532774.png" alt="Chip de tarjeta bancaria">
   <div class="numero-tarjeta">  4169 1614 7558 8025  </div>
@@ -537,8 +534,9 @@ button:active {
     <div class="banco">  BanCoppel  </div>
   </div>
 </div>  
-  <p>🗼Mercado Nuevo CETRAM Balancán, Tabasco🗼<br>
-    🕒Lunes a Domingo de : 3:00 p.m - 10:00 p.m </p>
+  
+    <h3>🌎 Mercado Nuevo CETRAM Balancán, Tabasco 🗼</h3>
+    🕒Lunes a Domingo de : 3:00 p.m - 10:00 p.m 🕒 </p>
   </footer>
 
 <!-- Nueva tarjeta: Aqui comienza Botón flotante de Facebook -->
@@ -759,12 +757,48 @@ function cerrarResumen() {
 }
 </script>
 
+
+<script>
+function enviarResumenPorWhatsApp() {
+  if (pedidos.length === 0) {
+    alert("🛒 No tienes productos en tu pedido.");
+    return;
+  }
+
+  const nombre = document.getElementById('nombre').value.trim();
+  if (nombre === "") {
+    alert("⚠️ Por favor escribe tu nombre antes de enviar el pedido.");
+    document.getElementById('nombre').focus();
+    return;
+  }
+
+  let mensaje = `Hola, soy *${nombre}* y quiero pedir:\n\n`;
+  let total = 0;
+
+  pedidos.forEach(item => {
+    mensaje += `✅ ${item.texto}\n`;
+    total += item.precio;
+  });
+
+  mensaje += `\n💵 *Total a pagar:* $${total} MXN`;
+
+  const numero = "529341184667"; // ← cámbialo si usas otro número
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+</script>
+
 <!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
 <button class="ver-carrito-btn" onclick="mostrarResumenPedido()">🛒 Ver lista</button>
 <div id="resumenPedido" class="resumen-pedido">
   <h3>🧾 Tu pedido:</h3>
   <ul id="listaResumen" style="padding-left: 1rem;"></ul>
   <p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
+
+  <button onclick="enviarResumenPorWhatsApp()" style="margin-top:10px; background: #25D366; color:white; border:none; padding:6px 12px; border-radius:6px;">
+  📲 WhatsApp
+</button>
+
   <button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
 </div>
 </body>
