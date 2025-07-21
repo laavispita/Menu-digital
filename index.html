@@ -6,6 +6,8 @@
   <title>La Avispita - Menú Digital</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Nueva tarjeta: Aqui comienza toda la parte del CSS que le el diseño ala pagina web -->
   <style>
     :root {
       --bg-color: #f7f7f7;
@@ -142,6 +144,48 @@ button:hover {
 /* Efecto clic */
 button:active {
   transform: scale(0.95);
+
+}
+.tarjeta-bancaria {
+  width: 340px;
+  height: 200px;
+  background: linear-gradient(135deg, #c7b40e, #2454a6);
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.chip {
+  width: 50px;
+  height: auto;
+  border-radius: 6px;
+
+}
+.numero-tarjeta {
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+.info-tarjeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+
+}
+.nombre-titular {
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+.banco {
+  font-style: italic;
 }
 </style>
 </head>
@@ -446,10 +490,18 @@ button:active {
       </div>
     </div>
 </section>
-  
+
 <!-- Nueva tarjeta: Aqui comienza los horarios, ubicacion , Redes sociales -->
 
   <footer id="contacto">
+  <div class="tarjeta-bancaria">
+  <img class="chip" src="https://png.pngtree.com/png-clipart/20240711/original/pngtree-creditcard-chip-business-chip-detail-photo-png-image_15532774.png" alt="Chip de tarjeta bancaria">
+  <div class="numero-tarjeta">  4169 1614 7558 8025  </div>
+  <div class="info-tarjeta">
+    <div class="nombre-titular">  Francisca San Roman Cruz  </div>
+    <div class="banco">  BanCoppel  </div>
+  </div>
+</div>  
   <p>🗼Mercado Nuevo CETRAM Balancán, Tabasco🗼<br>
     🕒Lunes a Domingo de : 3:00 p.m - 10:00 p.m </p>
   </footer>
@@ -611,6 +663,8 @@ button:active {
     const item = document.createElement('li');
     item.textContent = texto;
     lista.appendChild(item);
+    document.getElementById('fruta').value = "";
+
   }
 
    function vaciarCarrito() {
