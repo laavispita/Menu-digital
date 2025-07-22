@@ -110,13 +110,12 @@
     }
     .facebook-btn {
   position: fixed;
-  bottom: 90px; 
+  bottom: 150px; 
   right: 20px;
   z-index: 1000;
 }
-
 .facebook-btn img {
-  width: 60px;
+  width: 50px;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.2s;
@@ -147,8 +146,8 @@ button:active {
 
 }
 .tarjeta-bancaria {
-  width: 340px;
-  height: 200px;
+  width: 300px;
+  height: 160px;
   background: linear-gradient(135deg, #2454a6, #2454a6);
   color: white;
   border-radius: 16px;
@@ -163,7 +162,7 @@ button:active {
 
 }
 .chip {
-  width: 50px;
+  width: 30px;
   height: auto;
   border-radius: 6px;
 
@@ -190,7 +189,7 @@ button:active {
 
 .ver-carrito-btn {
   position: fixed;
-  bottom: 200px;
+  bottom: 250px;
   right: 20px;
   background-color: #00bcd4;
   color: white;
@@ -220,21 +219,91 @@ button:active {
   padding: 15px;
   z-index: 999;
 }
+
+.chatbot-container {
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  background: transparent;  /* 👈 que no se vea el fondo al cerrar */
+  border-radius: 12px;
+  width: auto;
+  z-index: 1000;
+}
+
+.chat-header {
+  background: #ffc107;
+  color: #000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+.chat-header:hover {
+  transform: scale(1.1);  /* efecto agrandado al pasar el mouse */
+}
+
+.chat-body {
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  background: white;   /* 👈 le damos fondo solo al cuerpo desplegado */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.chat-body button {
+  background: #f1f1f1;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.chat-body button:hover {
+  background: #e0e0e0;
+}
+.respuesta-chat {
+  margin-top: 10px;
+  background: #e3f2fd;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #000;
+}
+.chat-whatsapp {
+  display: block;
+  text-align: center;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
 </style>
 </head>
 <!-- Nueva tarjeta: Aqui Terminan los estilos CSS  de la pagina y comienzas los codigos HTML -->
 
 
 
-<!-- Nueva tarjeta: Aqui comienza el encabezado y los botones del Menu -->
+
+<!-- Nueva tarjeta: Aqui comienza los codigos HTML Y el encabezado y los botones del Menu-->
 <body>
   <nav>
     <a href="#productos">Menú Avispita</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#Forma de pago">Forma de pago </a>
   </nav>
+<header>
 
 
- <header>
  <!-- Nueva tarjeta: Aqui comienza el formulario de pedidos por Whatssapp -->
 
 <div class="card" data-aos="fade-up" style="overflow-x: auto;">
@@ -244,7 +313,7 @@ button:active {
 
    <!-- Nueva tarjeta: Aqui van la lista de los productos que se venden -->
 
-    <div style="flex: 1; min-width: 200px;">
+     <div style="flex: 1; min-width: 200px;">
       <label>📋 Producto:</label><br>
       <select id="producto" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
         <option value="Diablito">Diablito</option>
@@ -260,13 +329,15 @@ button:active {
       </select>
     </div>
 
-     <!-- Nueva tarjeta: Aqui va el nombre del usuario -->
+     <!-- Nueva tarjeta: Aqui va el usuario registra su nombre-->
+
     <div style="flex: 1; min-width: 200px;">
       <label>🧑 Tu nombre:</label><br>
       <input type="text" id="nombre" placeholder="Ejemplo: Isabel Parra" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
     </div>
 
-     <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario quiera agregar-->
+     <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario desea agregar-->
+
     <div style="flex: 1; min-width: 150px;">
       <label>🔢 Cantidad:</label><br>
       <select id="cantidad" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
@@ -278,13 +349,15 @@ button:active {
     </div>
 
      <!-- Nueva tarjeta: Aqui van la lista de precios y tamaños de los productos  -->
+
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
       <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
      </select>
     </div>
     
-    <!-- Mensaje donde el cliente describe como quiere su producto -->
+   
+<!-- Nueva tarjeta: Aqui es donde el cliente describe como quiere su producto  -->
 
     <div style="flex: 1 1 100%;">
       <label> 🧁Como lo quieres🥤</label><br>
@@ -297,13 +370,11 @@ button:active {
 <div id="carrito" style="padding: 1rem; max-width: 800px; margin: auto;">
   <h3>🧾 Tu pedido:</h3>
   <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
-
 <div style="text-align: center; margin: 1rem;">
-  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #ff5722; color: white; border: none; border-radius: 8px; font-weight: bold;">
+  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #12abc9; color: white; border: none; border-radius: 8px; font-weight: bold;">
      🛒 Agregar
   </button>
-
-  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #45e512; color: white; border: none; border-radius: 8px; font-weight: bold;">
+  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #e09f12; color: white; border: none; border-radius: 8px; font-weight: bold;">
     🧹 Vaciar
   </button>
 </div>
@@ -323,14 +394,12 @@ button:active {
         <p>Sabor Natural: Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
       </div>
     </div>
-
     <div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Tamaños y Precios</h3>
         <p>🥤 Diablito vaso N°12 - <strong>$60</strong></p>
         <p>🥤 Diablito vaso N°16 - <strong>$80</strong></p>
         <p>🥤 Diablito vaso N°32 - <strong>$100</strong></p>
-
         <h4>Combinacion de hasta 3 frutas</h4>
       </div>
     </div>
@@ -347,14 +416,12 @@ button:active {
         <p>Sabor Natural: Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
       </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Tamaños y Precios</h3>
        <p>🥤 Gloria vaso N°12 - <strong>$60</strong></p>
         <p>🥤 Gloria vaso N°16 - <strong>$80</strong></p>
         <p>🥤 Gloria vaso N°32 - <strong>$100</strong></p>
-        
         <h4>Combinacion de hasta 3 frutas</h4>
       </div>
     </div>
@@ -369,8 +436,7 @@ button:active {
         <p>Agua mineral🧊, Refresco de toronja,🍊perlas explosivas🎆</p>
       </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Tamaños y Precios</h3>
         <p>🥤 Sodas italianas - <strong>$55</strong></p>
@@ -378,8 +444,7 @@ button:active {
         <p>🥤 Bluberry Milk - <strong>$65</strong></p>
         <p>🥤 Refrescos de sabores - <strong>$25</strong></p>
         <p>🥤 Agua embotellada- <strong>$20</strong></p>
-
-        <h4>Favor de especificar el sabor </h4>
+<h4>Favor de especificar el sabor </h4>
       </div>
     </div>
 
@@ -397,8 +462,7 @@ button:active {
          <p>🍫Frapuccino de vainilla</p>
       </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Tamaños y Precios</h3>
         <p>🥤 Frapuccino - <strong>$60</strong></p>
@@ -409,8 +473,7 @@ button:active {
         <p>🥤 Frapuccino - <strong>$100</strong></p>
         <p>🥤 Frapuccino - <strong>$130</strong></p>
         <p>🥤 Frapuccino - <strong>$150</strong></p>
-
-        <h4>Favor de especificar el ingrediente </h4>
+<h4>Favor de especificar el ingrediente </h4>
       </div>
     </div>
 
@@ -428,8 +491,7 @@ button:active {
         <p>Raspado de uva🍇</p> 
       </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
       <h3>Raspados sabores naturales</h3>
         <p>Raspado de fresa🍓</p>
@@ -439,15 +501,13 @@ button:active {
         <p>Raspado de Guanabana</p>
         <p>Raspado de Nance</p>
         <p>Raspado de Nance curtido</p>
-
-        <h3>Tamaños y Precios</h3>
+<h3>Tamaños y Precios</h3>
         <p>🥤 Vaso N°10- <strong>$15</strong></p>
         <p>🥤 Vaso N°12 - <strong>$25</strong></p>
         <p>🥤 Vaso N°14- <strong>$35</strong></p>
         <p>🥤 Vaso N°16- <strong>$50</strong></p>
         <p>🥤 Vaso N°32 - <strong>$70</strong></p>
-
-        <h4>Favor de especificar el tipo de esencia </h4>
+<h4>Favor de especificar el tipo de esencia </h4>
       </div>
     </div>
 
@@ -466,8 +526,7 @@ button:active {
         <p>Chamoyadas de uva🍇</p>
       </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Chamoyada sabor Natural</h3>
         <p>Chamoyadas de fresa🍓</p>
@@ -477,17 +536,16 @@ button:active {
         <p>Chamoyadas de guanabana</p>
         <p>Chamoyadas de Nance</p>
         <p>Chamoyadas de Nance curtido</p>
-
-        <h3>Tamaños y Precios</h3>
+<h3>Tamaños y Precios</h3>
         <p>🥤 Vaso N°10- <strong>$25</strong></p>
         <p>🥤 Vaso N°12 - <strong>$35</strong></p>
         <p>🥤 Vaso N°14 - <strong>$45</strong></p>
         <p>🥤 Vaso N°16 - <strong>$60</strong></p>
         <p>🥤 Vaso N°32 - <strong>$80</strong></p>
-
-        <h4>Favor de especificar el tipo de esencia  </h4>
+<h4>Favor de especificar el tipo de esencia  </h4>
       </div>
  </div>
+
 
 <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los prostres-->
 
@@ -502,11 +560,9 @@ button:active {
           <p>Cupcakes de vainilla </p>
            <p>Pastel imposible🍩 </p>
             <p>Gelatinas de mosaico🍮 </p>
-        
-      </div>
+        </div>
     </div>
-
-    <div class="card" data-aos="fade-up">
+<div class="card" data-aos="fade-up">
       <div class="card-body">
         <h3>Precios</h3>
         <p> Pay de queso - <strong>$40</strong></p>
@@ -516,18 +572,31 @@ button:active {
         <p> Cupcakes de vainilla🍫- <strong>$20</strong></p>
         <p> Pastel imposbile🍩- <strong>$50</strong></p>
          <p> Gelatinas de mosaico🍮- <strong>$25</strong></p>
-
-        <h4>Precio por Rebanada</h4>
+<h4>Precio por Rebanada</h4>
       </div>
     </div>
 </section>
 
+
+<!-- Nueva tarjeta: Este codigo es la estructura del boton ChatBot-->
+
+<div class="chatbot-container" id="chatbot">
+  <div class="chat-header" onclick="toggleChat('👋 ¡Hola! ¿En qué te puedo ayudar?')">💬</div>
+  <div class="chat-body" id="chatBody">
+    <button onclick="respuesta('💵 Envios a domicilio solo aplican para productos con VASO N° 16.')">¿ Servico a domicilio?</button>
+    <button onclick="respuesta('🍧 Sabores: mango, tamarindo, fresa, chicle, oreo, gansito, mazapán y más.')">¿Qué sabores tienen?</button>
+    <button onclick="respuesta('🕒 Atendemos de lunes a domingo, de 3:00 PM a 10:00 PM.')">¿Cuál es su horario?</button>
+    <div id="respuestaChat" class="respuesta-chat"></div>
+    <a href=" " target="_blank" class=" "> </a>
+  </div>
+</div>
+
+
 <!-- Nueva tarjeta: Aqui comienza la tarjeta digital para compras y tambien los horarios, ubicacion , Redes sociales -->
 
-  <footer id="contacto">
-   <h3>Forma de pago</h3>
-   <h7>💳transferencia Electronica💳</h7>
-  <div class="tarjeta-bancaria">
+<footer id="Forma de pago">
+   <h4>Forma de pago - transferencia Electronica💳 </h4>
+   <div class="tarjeta-bancaria">
   <img class="chip" src="https://png.pngtree.com/png-clipart/20240711/original/pngtree-creditcard-chip-business-chip-detail-photo-png-image_15532774.png" alt="Chip de tarjeta bancaria">
   <div class="numero-tarjeta">  4169 1614 7558 8025  </div>
   <div class="info-tarjeta">
@@ -535,13 +604,12 @@ button:active {
     <div class="banco">  BanCoppel  </div>
   </div>
 </div>  
-  
-    <h3>🌎 Mercado Nuevo CETRAM Balancán, Tabasco 🗼</h3>
-    🕒Lunes a Domingo de : 3:00 p.m - 10:00 p.m 🕒 </p>
+  <h4>🌎 Mercado Nuevo CETRAM Balancán, Tabasco 🗼</h4>
   </footer>
 
+
 <!-- Nueva tarjeta: Aqui comienza Botón flotante de Facebook -->
- 
+
 <a href="https://www.facebook.com/share/1CA2ZMbaG8/" class="facebook-btn" target="_blank">
   <img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook" />
 </a>
@@ -549,7 +617,7 @@ button:active {
 
 <!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
 
-<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">🛒 ver carrito</button>
+<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">  🛒  </button>
 <div id="resumenPedido" class="resumen-pedido">
   <h3>🧾 Tu pedido:</h3>
   <ul id="listaResumen" style="padding-left: 1rem;"></ul>
@@ -751,6 +819,7 @@ button:active {
   }
 </script>
 
+
 <script>
 function mostrarResumenPedido() {
   const lista = document.getElementById('listaResumen');
@@ -805,6 +874,40 @@ function enviarResumenPorWhatsApp() {
 }
 
 </script>
+
+<script>
+function toggleChat() {
+  const chatBody = document.getElementById('chatBody');
+  chatBody.style.display = chatBody.style.display === 'flex' ? 'none' : 'flex';
+}
+function respuesta(texto) {
+  const respuesta = document.getElementById('respuestaChat');
+  respuesta.textContent = texto;
+}
+</script>
+
+<script>
+function toggleChat() {
+  const chatBody = document.getElementById('chatBody');
+  chatBody.style.display = chatBody.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function respuesta(texto) {
+  const respuesta = document.getElementById('respuestaChat');
+  respuesta.textContent = texto;
+}
+
+// 🧠 Abrir chat automáticamente con saludo
+window.addEventListener('load', () => {
+  const chatBody = document.getElementById('chatBody');
+  const respuesta = document.getElementById('respuestaChat');
+  chatBody.style.display = 'flex'; // abrir chat
+  respuesta.textContent = '👋 ¡Hola! ¿En qué te puedo ayudar?'; // saludo
+});
+</script>
+
+
+
 </body>
 </html>
 
