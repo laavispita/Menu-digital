@@ -115,7 +115,7 @@
   z-index: 1000;
 }
 .facebook-btn img {
-  width: 50px;
+  width: 40px;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.2s;
@@ -195,8 +195,8 @@ button:active {
   color: white;
   border: none;
   border-radius: 50px;
-  padding: 12px 20px;
-  font-size: 16px;
+  padding:5px;
+  font-size: 25px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   cursor: pointer;
   z-index: 999;
@@ -229,20 +229,18 @@ button:active {
   width: auto;
   z-index: 1000;
 }
-
 .chat-header {
+  width: 45px;
+  height: 45px;
   background: #ffc107;
   color: #000;
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
 }
 .chat-header:hover {
   transform: scale(1.1);  /* efecto agrandado al pasar el mouse */
@@ -583,8 +581,10 @@ button:active {
 <div class="chatbot-container" id="chatbot">
   <div class="chat-header" onclick="toggleChat('👋 ¡Hola! ¿En qué te puedo ayudar?')">💬</div>
   <div class="chat-body" id="chatBody">
-    <button onclick="respuesta('💵 Envios a domicilio solo aplican para productos con VASO N° 16.')">¿ Servico a domicilio?</button>
-    <button onclick="respuesta('🍧 Sabores: mango, tamarindo, fresa, chicle, oreo, gansito, mazapán y más.')">¿Qué sabores tienen?</button>
+    <button onclick="respuesta(' Estimado cliente le cordamos que el servicio a domicilio tiene un costo de $15 pesos adicional a su pedido')">¿ Servico a domicilio?</button>
+    <button onclick="respuesta('Los productos que tengan disponibilidad en VASO N°16, Postres y mas.')"> ¿Que productos se llevan a domicilio ?</button>
+<button onclick="respuesta('🍧 Sabores: mango, tamarindo, fresa, chicle, oreo, gansito, mazapán y más.')">¿Qué sabores tienen?
+</button>
     <button onclick="respuesta('🕒 Atendemos de lunes a domingo, de 3:00 PM a 10:00 PM.')">¿Cuál es su horario?</button>
     <div id="respuestaChat" class="respuesta-chat"></div>
     <a href=" " target="_blank" class=" "> </a>
@@ -595,7 +595,7 @@ button:active {
 <!-- Nueva tarjeta: Aqui comienza la tarjeta digital para compras y tambien los horarios, ubicacion , Redes sociales -->
 
 <footer id="Forma de pago">
-   <h4>Forma de pago - transferencia Electronica💳 </h4>
+   <h4>Forma de pago -transferencia Electronica💳 </h4>
    <div class="tarjeta-bancaria">
   <img class="chip" src="https://png.pngtree.com/png-clipart/20240711/original/pngtree-creditcard-chip-business-chip-detail-photo-png-image_15532774.png" alt="Chip de tarjeta bancaria">
   <div class="numero-tarjeta">  4169 1614 7558 8025  </div>
