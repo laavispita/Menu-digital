@@ -111,11 +111,11 @@
     .facebook-btn {
   position: fixed;
   bottom: 150px; 
-  right: 20px;
+  right: 10px;
   z-index: 1000;
 }
 .facebook-btn img {
-  width: 40px;
+  width: 45px;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.2s;
@@ -185,26 +185,36 @@ button:active {
 }
 .banco {
   font-style: italic;
+
+
+}
+.carrito-notificacion {
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: none;
 }
 
 .ver-carrito-btn {
   position: fixed;
   bottom: 250px;
-  right: 20px;
-  background-color: #00bcd4;
+  right: 10px;
+  background-color: #d46a00;
   color: white;
   border: none;
   border-radius: 50px;
-  padding:5px;
+  padding: 6px 6px;
   font-size: 25px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   cursor: pointer;
   z-index: 999;
   transition: all 0.3s ease;
-}
-
-.ver-carrito-btn:hover {
-  transform: scale(1.05);
 }
 
 .resumen-pedido {
@@ -219,7 +229,6 @@ button:active {
   padding: 15px;
   z-index: 999;
 }
-
 .chatbot-container {
   position: fixed;
   bottom: 60px;
@@ -318,10 +327,10 @@ button:active {
         <option value="Gloria">Gloria</option>
         <option value="Soda Italiana">Soda Italiana</option>
         <option value="Frappe">Frappe</option>
-        <option value="Raspados de Esencia">Raspados de Esencia</option>
-        <option value="Raspados Naturales">Raspados Naturales</option>
-        <option value="Chamoyadas de Esencia">Chamoyadas de Esencia</option>
-        <option value="Chamoyadas Naturales">Chamoyadas Naturales</option>
+        <option value="Raspado de Esencia">Raspado de Esencia</option>
+        <option value="Raspado Natural">Raspado Natural</option>
+        <option value="Chamoyada de Esencia">Chamoyada de Esencia</option>
+        <option value="Chamoyada Natural">Chamoyada Natural</option>
         <option value="Postre">Postre</option>
         <option value="Refresco">Refresco</option>
       </select>
@@ -581,7 +590,7 @@ button:active {
 <div class="chatbot-container" id="chatbot">
   <div class="chat-header" onclick="toggleChat('👋 ¡Hola! ¿En qué te puedo ayudar?')">💬</div>
   <div class="chat-body" id="chatBody">
-    <button onclick="respuesta(' Estimado cliente le cordamos que el servicio a domicilio tiene un costo de $15 pesos adicional a su pedido')">¿ Servico a domicilio?</button>
+    <button onclick="respuesta(' Estimado cliente le cordamos que el servicio a domicilio tiene un costo de $15 pesos adicional a su pedido')">¿ Servicio a domicilio?</button>
     <button onclick="respuesta('Los productos que tengan disponibilidad en VASO N°16, Postres y mas.')"> ¿Que productos se llevan a domicilio ?</button>
 <button onclick="respuesta('🍧 Sabores: mango, tamarindo, fresa, chicle, oreo, gansito, mazapán y más.')">¿Qué sabores tienen?
 </button>
@@ -617,17 +626,20 @@ button:active {
 
 <!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
 
-<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">  🛒  </button>
+<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">
+  🛒
+  <span id="carritoNotificacion" class="carrito-notificacion">0</span>
+</button>
 <div id="resumenPedido" class="resumen-pedido">
-  <h3>🧾 Tu pedido:</h3>
-  <ul id="listaResumen" style="padding-left: 1rem;"></ul>
-  <p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
+<h3>🧾 Tu pedido:</h3>
+<ul id="listaResumen" style="padding-left: 1rem;"></ul>
+<p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
+  
 
   <button onclick="enviarResumenPorWhatsApp()" style="margin-top:10px; background: #25D366; color:white; border:none; padding:6px 12px; border-radius:6px;">
   📲 WhatsApp
 </button>
-
-  <button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
+<button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
 
 
 <!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
@@ -686,14 +698,14 @@ button:active {
       "de queso de poro - $ 100 MXN",
       
     ],
- "Raspados de Esencia": [
+ "Raspado de Esencia": [
       "Vaso N° 10- $15 MXN",
       "Vaso N° 12- $25 MXN",
       "Vaso N° 14- $35 MXN",
       "Vaso N° 16- $50 MXN",
       "Vaso N° 32- $70 MXN",
     ],
- "Raspados Naturales": [
+ "Raspado Natural": [
       "Vaso N° 10- $15 MXN",
       "Vaso N° 12- $25 MXN",
       "Vaso N° 14- $35 MXN",
@@ -701,14 +713,14 @@ button:active {
       "Vaso N° 32- $70 MXN",
       
     ],
- "Chamoyadas de Esencia": [
+ "Chamoyada de Esencia": [
       "Vaso N° 10- $25 MXN",
       "Vaso N° 12- $35 MXN",
       "Vaso N° 14- $45 MXN",
       "Vaso N° 16- $60 MXN",
       "Vaso N° 32- $80 MXN",
     ],
-    "Chamoyadas Naturales": [
+    "Chamoyada Natural": [
       "Vaso N° 10- $25 MXN",
       "Vaso N° 12- $35 MXN",
       "Vaso N° 14- $45 MXN",
@@ -766,6 +778,10 @@ button:active {
   const tamano = document.getElementById('tamano').value;
   const fruta = document.getElementById('fruta').value;
   const nombre = document.getElementById('nombre').value.trim();
+const noti = document.getElementById('carritoNotificacion');
+noti.style.display = 'inline-block';
+noti.textContent = pedidos.length;
+
 
   if (nombre === "") {
     alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
