@@ -110,7 +110,7 @@
     }
     .facebook-btn {
   position: fixed;
-  bottom: 150px; 
+  bottom: 220px; 
   right: 10px;
   z-index: 1000;
 }
@@ -168,7 +168,7 @@ button:active {
 
 }
 .numero-tarjeta {
-  font-size: 22px;
+  font-size: 17px;
   letter-spacing: 3px;
   margin-top: 20px;
 }
@@ -203,7 +203,7 @@ button:active {
 
 .ver-carrito-btn {
   position: fixed;
-  bottom: 250px;
+  bottom: 121px;
   right: 10px;
   background-color: #d46a00;
   color: white;
@@ -231,7 +231,7 @@ button:active {
 }
 .chatbot-container {
   position: fixed;
-  bottom: 60px;
+  bottom: 20px;
   right: 10px;
   background: transparent;  /* 👈 que no se vea el fondo al cerrar */
   border-radius: 12px;
@@ -375,14 +375,14 @@ button:active {
 <!-- Este codigo arma la lista de un carrito de pedidos y se envia todo por whatssap -->
 
 <div id="carrito" style="padding: 1rem; max-width: 800px; margin: auto;">
-  <h3>🧾 Tu pedido:</h3>
+  <h3>📦 Añadir:</h3>
   <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
 <div style="text-align: center; margin: 1rem;">
-  <button onclick="agregarAlCarrito()" style="padding: 10px 20px; margin: 5px; background: #12abc9; color: white; border: none; border-radius: 8px; font-weight: bold;">
-     🛒 Agregar
+  <button onclick="agregarAlCarrito()" style="padding: 10px 10px; margin: 5px; background: #12abc9; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    <span style="font-size: 25px; margin-right: 8px;">🛒</span>
   </button>
-  <button onclick="vaciarCarrito()" style="padding: 10px 20px; margin: 5px; background: #e09f12; color: white; border: none; border-radius: 8px; font-weight: bold;">
-    🧹 Vaciar
+  <button onclick="vaciarCarrito()" style="padding: 10px 10px; margin: 5px; background: #d45500; color: white; border: none; border-radius: 8px; font-weight: bold;">
+    <span style="font-size: 25px; margin-right: 8px;">🧹</span>
   </button>
 </div>
 </div>
