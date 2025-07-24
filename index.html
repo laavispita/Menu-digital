@@ -205,7 +205,7 @@ button:active {
   position: fixed;
   bottom: 121px;
   right: 10px;
-  background-color: #d46a00;
+  background-color: #d45500;
   color: white;
   border: none;
   border-radius: 50px;
@@ -291,17 +291,17 @@ button:active {
   background: #25D366;
   color: white;
   text-decoration: none;
-  padding: 8px;
+  padding: 5px;
   border-radius: 8px;
   margin-top: 10px;
 }
 
   select {
     padding: 10px;
-    border: 2px solid #ffc107;
+    border: 2px solid #2cff07;
     border-radius: 10px;
-    background-color: #fad2b4;
-    color: #333;
+    background-color: #f5a42c;
+    color: #faf5f5;
     font-weight: bold;
     font-size: 13px;
     cursor: pointer;
@@ -316,7 +316,7 @@ button:active {
   }
 
   select:hover {
-    border-color: #ff9800;
+    border-color:#00ffff;
     box-shadow: 0 0 8px rgba(255,193,7,0.5);
   }
 </style>
@@ -364,14 +364,14 @@ button:active {
 
     <div style="flex: 1; min-width: 200px;">
       <label>🧑 Tu nombre:</label><br>
-      <input type="text" id="nombre" placeholder="Ejemplo: Isabel Parra" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="text" id="nombre" placeholder="Isabel Parra" style="width: 50%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
     </div>
 
      <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario desea agregar-->
 
     <div style="flex: 1; min-width: 150px;">
       <label>🔢 Cantidad:</label><br>
-      <select id="cantidad" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <select id="cantidad" style="width: 50%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -383,7 +383,7 @@ button:active {
 
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
-      <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <select id="tamano" style="width: 70%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
      </select>
     </div>
     
@@ -795,17 +795,13 @@ button:active {
 <!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
 
 <script>
-  const pedidos = []; // asegúrate que esto va arriba
-  function agregarAlCarrito() {
+  const pedidos = []; 
+function agregarAlCarrito() {
   const producto = document.getElementById('producto').value;
   const cantidad = document.getElementById('cantidad').value;
   const tamano = document.getElementById('tamano').value;
   const fruta = document.getElementById('fruta').value;
   const nombre = document.getElementById('nombre').value.trim();
-const noti = document.getElementById('carritoNotificacion');
-noti.style.display = 'inline-block';
-noti.textContent = pedidos.length;
-
 
   if (nombre === "") {
     alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
@@ -818,14 +814,24 @@ noti.textContent = pedidos.length;
   const match = tamano.match(/\$ ?(\d+)/);
   const precio = match ? parseInt(match[1]) * parseInt(cantidad) : 0;
 
-  pedidos.push({ texto, precio }); // 👈 así debe ir
+  pedidos.push({ texto, precio }); // ✅ Agregamos el pedido
 
   const lista = document.getElementById('listaPedidos');
   const item = document.createElement('li');
   item.textContent = `✅ ${texto}`;
   lista.appendChild(item);
 
+  // ✅ Limpiar campo fruta
   document.getElementById('fruta').value = "";
+
+  // ✅ 🔴 Actualizar contador rojo del carrito
+  const noti = document.getElementById('carritoNotificacion');
+  if (pedidos.length > 0) {
+    noti.style.display = 'inline-block';
+    noti.textContent = pedidos.length;
+  } else {
+    noti.style.display = 'none';
+  }
 
   console.log("Pedido agregado:", pedidos);
 }
