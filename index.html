@@ -205,7 +205,7 @@ button:active {
   position: fixed;
   bottom: 121px;
   right: 10px;
-  background-color: #f28b24;
+  background-color: #6ff03c;
   color: white;
   border: none;
   border-radius: 50px;
@@ -364,14 +364,14 @@ button:active {
 
     <div style="flex: 1; min-width: 200px;">
       <label>🧑 Tu nombre:</label><br>
-      <input type="text" id="nombre" placeholder="Isabel Parra" style="width: 50%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="text" id="nombre" placeholder="Isabel Jimenez Parra" style="width: 50%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
     </div>
 
      <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario desea agregar-->
 
     <div style="flex: 1; min-width: 150px;">
       <label>🔢 Cantidad:</label><br>
-      <select id="cantidad" style="width: 50%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <select id="cantidad" style="width: 20%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -383,7 +383,7 @@ button:active {
 
     <div style="flex: 1; min-width: 180px;">
       <label>📦 Tamaño:</label><br>
-      <select id="tamano" style="width: 70%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+      <select id="tamano" style="width: 75%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
      </select>
     </div>
     
@@ -399,13 +399,13 @@ button:active {
 <!-- Este codigo arma la lista de un carrito de pedidos y se envia todo por whatssap -->
 
 <div id="carrito" style="padding: 1rem; max-width: 800px; margin: auto;">
-  <h3>📦 Añadir tu pedidos:</h3>
+  <h3>📦 Agregar pedido:</h3>
   <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
 <div style="text-align: center; margin: 1rem;">
-  <button onclick="agregarAlCarrito()" style="padding: 10px 10px; margin: 5px; background: #f28b24; color: white; border: none; border-radius: 8px; font-weight: bold;">
+  <button onclick="agregarAlCarrito()" style="padding: 10px 10px; margin: 5px; background: #6ff03c; color: white; border: none; border-radius: 8px; font-weight: bold;">
     <span style="font-size: 25px; margin-right: 8px;">🛒</span>
   </button>
-  <button onclick="vaciarCarrito()" style="padding: 10px 10px; margin: 5px; background: #8c3b3b; color: white; border: none; border-radius: 8px; font-weight: bold;">
+  <button onclick="vaciarCarrito()" style="padding: 10px 10px; margin: 5px; background: #d13b3b; color: white; border: none; border-radius: 8px; font-weight: bold;">
     <span style="font-size: 25px; margin-right: 8px;">🧹</span>
   </button>
 </div>
@@ -792,8 +792,8 @@ button:active {
   });
 </script>
 
-<!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
 
+<!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
 <script>
   const pedidos = []; 
 function agregarAlCarrito() {
@@ -818,7 +818,7 @@ function agregarAlCarrito() {
 
   const lista = document.getElementById('listaPedidos');
   const item = document.createElement('li');
-  item.textContent = `🥤🍨 ${texto}`;
+
   lista.appendChild(item);
 
   // ✅ Limpiar campo fruta
@@ -837,33 +837,15 @@ function agregarAlCarrito() {
 }
 
   function vaciarCarrito() {
-  pedidos.length = 0; // vacía el array
-  const lista = document.getElementById('listaPedidos');
-  lista.innerHTML = ''; // borra lo que se ve en la lista
-  }
+  pedidos.length = 0; // Limpia el array
+  document.getElementById('listaPedidos').innerHTML = "";
 
-  function enviarCarrito() {
-    const nombre = document.getElementById('nombre').value.trim();
-
-    if (nombre === "") {
-      alert("⚠️ Escribe tu nombre antes de enviar el pedido.");
-      document.getElementById('nombre').focus();
-      return;
-    }
-
-    if (pedidos.length === 0) {
-      alert("🛒 Agrega al menos un producto al carrito.");
-      return;
-    }
-
-    let mensaje = `Hola, soy: ${nombre}\nQuiero pedir:\n`;
-    mensaje += pedidos.join('\n');
-
-    const numero = '529341184667';
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-  }
+  // 🔴 Oculta el numerito del carrito flotante
+  const noti = document.getElementById('carritoNotificacion');
+  noti.style.display = 'none';
+}
 </script>
+
 
 
 <script>
@@ -904,7 +886,7 @@ function enviarResumenPorWhatsApp() {
     return;
   }
 
-  let mensaje = `Hola, soy *${nombre}* y quiero pedir:\n\n`;
+  let mensaje = `Hola, te escribe ( ${nombre} ) y quiero pedir:\n\n`;
   let total = 0;
 
   pedidos.forEach(item => {
@@ -912,14 +894,24 @@ function enviarResumenPorWhatsApp() {
     total += item.precio;
   });
 
-  mensaje += `\n💵 *Total a pagar:* $${total} MXN`;
+  mensaje += `\n💵 Total a pagar: $${total} MXN`;
 
   const numero = "529341184667"; // ← cámbialo si usas otro número
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
-}
 
+  // ✅ Limpiar carrito visual
+  document.getElementById('listaPedidos').innerHTML = "";
+
+  // ✅ Limpiar arreglo pedidos
+  pedidos.length = 0;
+
+  // ✅ Ocultar globito rojo
+  const noti = document.getElementById('carritoNotificacion');
+  noti.style.display = 'none';
+}
 </script>
+
 
 <script>
 function toggleChat() {
@@ -951,9 +943,6 @@ window.addEventListener('load', () => {
   respuesta.textContent = '👋 ¡Hola! ¿En qué te puedo ayudar?'; // saludo
 });
 </script>
-
-
-
 </body>
 </html>
 
