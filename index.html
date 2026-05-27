@@ -1,955 +1,270 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Avispita - Menú Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Nueva tarjeta: Aqui comienza toda la parte del CSS que le el diseño a la pagina web -->
-  <style>
-    :root {
-      --bg-color: #f7f7f7;
-      --primary-color: #ffc107;
-      --text-color: #333;
-      --card-bg: #fff;
-      --accent-color: #ff5722;
-      --radius: 15px;
+<title>Paneles Solares</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#07121f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Fondo decorativo */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:rgba(255, 196, 0, 0.08);
+    border-radius:50%;
+    top:-250px;
+    right:-150px;
+    filter:blur(60px);
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(0, 255, 213, 0.05);
+    border-radius:50%;
+    bottom:-200px;
+    left:-150px;
+    filter:blur(60px);
+    z-index:-1;
+}
+
+/* HEADER */
+
+header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.logo{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:3.5rem;
+    color:#FFD54A;
+    margin-bottom:15px;
+}
+
+.subtitulo{
+    max-width:700px;
+    font-size:1.2rem;
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+/* BOTON */
+
+.boton{
+    margin-top:35px;
+    display:inline-block;
+    padding:16px 35px;
+    background:linear-gradient(45deg,#FFD54A,#ff9800);
+    color:#111827;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:14px;
+    transition:0.3s;
+    box-shadow:0 10px 25px rgba(255, 187, 0, 0.3);
+}
+
+.boton:hover{
+    transform:translateY(-4px);
+}
+
+/* SECCION GALERIA */
+
+.galeria{
+    width:100%;
+    padding:80px 20px;
+}
+
+.titulo-seccion{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#FFD54A;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:35px;
+}
+
+/* TARJETAS */
+
+.card{
+    width:360px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:25px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+/* TEXTO */
+
+.card-content{
+    padding:25px;
+}
+
+.card-content h2{
+    color:#FFD54A;
+    margin-bottom:15px;
+}
+
+.card-content p{
+    color:#d1d5db;
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:60px;
+    padding:30px;
+    text-align:center;
+    background:#050b14;
+    color:#9ca3af;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+
+    .subtitulo{
+        font-size:1rem;
     }
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: #fff;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 999;
+
+    .card{
+        width:95%;
     }
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: bold;
-    }
-    header {
-      background-color: var(--primary-color);
-      padding: 2rem 1rem;
-      text-align: center;
-      color: #000;
-    }
-    header img {
-      width: 100px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-    
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 1rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .card {
-      background-color: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 1rem;
-    }
-    .card-body h3 {
-      margin: 0 0 0.5rem;
-      color: var(--accent-color);
-    }
-    .card-body p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-    .gallery {
-      max-width: 1000px;
-      margin: 2rem auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 0 1rem;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: var(--radius);
-    }
-    
-    footer {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-    .facebook-btn {
-  position: fixed;
-  bottom: 220px; 
-  right: 10px;
-  z-index: 1000;
-}
-.facebook-btn img {
-  width: 50px;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-.facebook-btn img:hover {
-  transform: scale(1.1);
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover */
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Efecto clic */
-button:active {
-  transform: scale(0.95);
 
 }
-.tarjeta-bancaria {
-  width: 300px;
-  height: 160px;
-  background: linear-gradient(135deg, #2454a6, #2454a6);
-  color: white;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 20px auto;
-  font-family: 'Courier New', Courier, monospace;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-}
-.chip {
-  width: 30px;
-  height: auto;
-  border-radius: 6px;
-
-}
-.numero-tarjeta {
-  font-size: 17px;
-  letter-spacing: 3px;
-  margin-top: 20px;
-}
-.info-tarjeta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-
-}
-.nombre-titular {
-  font-weight: bold;
-  text-transform: uppercase;
-
-}
-.banco {
-  font-style: italic;
-
-
-}
-.carrito-notificacion {
-  background: red;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  display: none;
-}
-
-.ver-carrito-btn {
-  position: fixed;
-  bottom: 121px;
-  right: 10px;
-  background-color: #6ff03c;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 10px;
-  font-size: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  cursor: pointer;
-  z-index: 999;
-  transition: all 0.3s ease;
-}
-
-.resumen-pedido {
-  display: none;
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  padding: 15px;
-  z-index: 999;
-}
-.chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  background: transparent;  /* 👈 que no se vea el fondo al cerrar */
-  border-radius: 12px;
-  width: auto;
-  z-index: 1000;
-}
-.chat-header {
-  width: 52px;
-  height: 52px;
-  background: #126cb5;
-  color: #000;
-  border-radius: 50%;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  cursor: pointer;
-}
-.chat-header:hover {
-  transform: scale(1.1);  /* efecto agrandado al pasar el mouse */
-}
-
-.chat-body {
-  display: none;
-  flex-direction: column;
-  padding: 10px;
-  background: white;   /* 👈 le damos fondo solo al cuerpo desplegado */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.chat-body button {
-  background: #f1f1f1;
-  border: none;
-  padding: 8px 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.chat-body button:hover {
-  background: #e0e0e0;
-}
-.respuesta-chat {
-  margin-top: 10px;
-  background: #e3f2fd;
-  padding: 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  color: #000;
-}
-.chat-whatsapp {
-  display: block;
-  text-align: center;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
-  select {
-    padding: 10px;
-    border: 2px solid #2cff07;
-    border-radius: 10px;
-    background-color: #126cb5;
-    color: #f5f0f0;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    appearance: none; 
-    background-image: url('https://cdn-icons-png.flaticon.com/512/5781/5781771.png'); /* ícono de flecha */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 22px;
-    padding-right: 30px; 
-  }
-
-  select:hover {
-    border-color:#00ffff;
-    box-shadow: 0 0 8px rgba(255,193,7,0.5);
-  }
 </style>
 </head>
-<!-- Nueva tarjeta: Aqui Terminan los estilos CSS  de la pagina y comienzas los codigos HTML -->
-
-
-
-
-<!-- Nueva tarjeta: Aqui comienza los codigos HTML Y el encabezado y los botones del Menu-->
-<!-- Logo flotante esquina superior derecha -->
-<div style="position: fixed; top: 60px; left: 2px; z-index: 9999;">
-  <a href="#top">
-    <img src="https://img.freepik.com/vector-premium/avispa-dibujos-animados-vuelo-concepto-logotipo-insecto-linda-mascota-avispa-abeja_641602-588.jpg" alt="La Avispita" style="height: 60px; border-radius: 100%; box-shadow: 0 0 10px #00000055;">
-  </a>
-</div>
 
 <body>
-  <nav>
-    <a href="#productos">Menú Avispita</a>
-    <a href="#Forma de pago">Forma de pago </a>
-  </nav>
+
 <header>
 
+    <div class="logo">☀️</div>
 
- <!-- Nueva tarjeta: Aqui comienza el formulario de pedidos por Whatssapp -->
+    <h1>Energía Solar Inteligente</h1>
 
-<div class="card" data-aos="fade-up" style="overflow-x: auto;">
-  <div class="card-body" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; background: #fffbea; border-radius: 15px; padding: 1rem;">
-    <h3 style="width: 100%; text-align: center; color: #ff5722;">📲Haz tu pedido🛵</h3>
+    <p class="subtitulo">
+        Ahorra dinero y lleva energía limpia a tu hogar con nuestros kits solares profesionales.
+    </p>
 
+    <a class="boton" href="#">
+        Solicitar Cotización
+    </a>
 
-   <!-- Nueva tarjeta: Aqui van la lista de los productos que se venden -->
-
-     <div style="flex: 1; min-width: 200px;">
-      <label>📋 Producto:</label><br>
-      <select id="producto" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="Diablito">Diablito</option>
-        <option value="Gloria">Gloria</option>
-        <option value="Soda Italiana">Soda Italiana</option>
-        <option value="Frappe">Frappe</option>
-        <option value="Raspado de Esencia">Raspado de Esencia</option>
-        <option value="Raspado Natural">Raspado Natural</option>
-        <option value="Chamoyada de Esencia">Chamoyada de Esencia</option>
-        <option value="Chamoyada Natural">Chamoyada Natural</option>
-        <option value="Postre">Postre</option>
-        <option value="Refresco">Refresco</option>
-      </select>
-    </div>
-
-     <!-- Nueva tarjeta: Aqui va el usuario registra su nombre-->
-
-    <div style="flex: 1; min-width: 200px;">
-      <label>🧑 Tu nombre:</label><br>
-      <input type="text" id="nombre" placeholder="Isabel Jimenez Parra" style="width: 60%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-    </div>
-
-     <!-- Nueva tarjeta: Aqui va la cantidad  de producto que el usuario desea agregar-->
-
-    <div style="flex: 1; min-width: 180px;">
-      <label>🔢 Cantidad:</label><br>
-      <select id="cantidad" style="width: 30%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-    </div>
-
-     <!-- Nueva tarjeta: Aqui van la lista de precios y tamaños de los productos  -->
-
-    <div style="flex: 1; min-width: 180px;">
-      <label>📦 Tamaño:</label><br>
-      <select id="tamano" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
-     </select>
-    </div>
-    
-   
-<!-- Nueva tarjeta: Aqui es donde el cliente describe como quiere su producto  -->
-
-    <div style="flex: 1 1 100%;">
-      <label> 🧁Como lo quieres🥤</label><br>
-      <textarea id="fruta" rows="2" placeholder="Si tu pedido tiene combinaciones comenta aqui 👇" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-    </div>
-
-
-<!-- Este codigo arma la lista de un carrito de pedidos y se envia todo por whatssap -->
-
-<div id="carrito" style="padding: 1rem; max-width: 800px; margin: auto;">
-  <h3>📦 Agregar pedido:</h3>
-  <ul id="listaPedidos" style="list-style: none; padding: 0;"></ul>
-<div style="text-align: center; margin: 1rem;">
-  <button onclick="agregarAlCarrito()" style="padding: 10px 10px; margin: 5px; background: #6ff03c; color: white; border: none; border-radius: 200px; font-weight: bold;">
-    <span style="font-size: 25px; margin-right: 0px;">🛒</span>
-  </button>
-  <button onclick="vaciarCarrito()" style="padding: 10px 10px; margin: 5px; background: #ff5607; color: white; border: none; border-radius: 200px; font-weight: bold;">
-    <span style="font-size: 25px; margin-right: 0px;">🧹</span>
-  </button>
-</div>
-</div>
 </header>
 
+<section class="galeria">
 
- <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los  Diablitos -->
+    <h2 class="titulo-seccion">
+        Nuestros Paneles
+    </h2>
 
-  <section class="products" id="productos">
-    <div class="card" data-aos="fade-up">
-      <img src="https://pbs.twimg.com/media/D9wv4W5U4AEhVX-?format=jpg&name=large" alt="Diablitos">
-      <div class="card-body">
-        <h3>Diablitos</h3>
-        <p>Fruta picada: 🥭Mango, Manzana, Durazno, 🥝Kiwi, Piña, 🍓Fresa, Grosella, Miguelito, Chamoy</p>
-        <p>Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva, Piña, Rompope </p>
-        <p>Sabor Natural: Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
-      </div>
-    </div>
-    <div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Tamaños y Precios</h3>
-        <p>🥤 Diablito vaso N°12 - <strong>$60</strong></p>
-        <p>🥤 Diablito vaso N°16 - <strong>$80</strong></p>
-        <p>🥤 Diablito vaso N°32 - <strong>$100</strong></p>
-        <h4>Combinacion de hasta 3 frutas</h4>
-      </div>
-    </div>
+    <div class="cards">
 
- <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Glorias -->
+        <!-- TARJETA 1 -->
 
-<div class="card" data-aos="fade-up">
-      <img src="https://i.blogs.es/860e47/dap-1-32-/1366_2000.jpg" alt="Glorias">
-      <div class="card-body">
-        <h3>Glorias</h3>
-         <p>La lechera🥛, Leche Carnattion🐄</p>
-        <p>Fruta picada: 🥭Mango, Manzana, Durazno, 🥝Kiwi, Piña, 🍓Fresa, Grosella, Rompope </p>
-        <p>Sabor de esencia: Chicle, Coca, Fresa, Limon, Uva, Piña, </p>
-        <p>Sabor Natural: Fresa, Nance, 🍇Uva, Piña, Guanabana, Tamarindo, 🥭Mango, Nance curtido</p>
-      </div>
-    </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Tamaños y Precios</h3>
-       <p>🥤 Gloria vaso N°12 - <strong>$60</strong></p>
-        <p>🥤 Gloria vaso N°16 - <strong>$80</strong></p>
-        <p>🥤 Gloria vaso N°32 - <strong>$100</strong></p>
-        <h4>Combinacion de hasta 3 frutas</h4>
-      </div>
-    </div>
+        <div class="card">
 
-<!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los  Sodas Italianas -->
+            <!-- AQUI VA EL LINK DE GOOGLE DRIVE -->
+            <img src="AQUI_PEGA_EL_LINK_DE_LA_IMAGEN_1" alt="Panel Solar 1">
 
-<div class="card" data-aos="fade-up">
-      <img src="https://losmilagrosdedalila.com/wp-content/uploads/2017/04/SODA-ITALIANA-FRESA-9715.jpg" alt="Sodas">
-      <div class="card-body">
-        <h3>Sodas Italianas</h3>
-        <p>Sirope: Fresa🍓, Manzana verde, Mora </p>
-        <p>Agua mineral🧊, Refresco de toronja,🍊perlas explosivas🎆</p>
-      </div>
-    </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Tamaños y Precios</h3>
-        <p>🥤 Sodas italianas - <strong>$55</strong></p>
-        <p>🥤 Strawberry Milk - <strong>$65</strong></p>
-        <p>🥤 Bluberry Milk - <strong>$65</strong></p>
-        <p>🥤 Refrescos de sabores - <strong>$25</strong></p>
-        <p>🥤 Agua embotellada- <strong>$20</strong></p>
-<h4>Favor de especificar el sabor </h4>
-      </div>
-    </div>
+            <div class="card-content">
 
-   <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los frappes -->
+                <h2>Kit Solar Residencial</h2>
 
-    <div class="card" data-aos="fade-up">
-      <img src="https://i0.wp.com/www.buenossaborespanama.com/wp-content/uploads/2020/09/867-scaled.jpg?fit=1709%2C2560&ssl=1" alt="Frappes">
-      <div class="card-body">
-        <h3>Frappes</h3>
-        <p>🍫Frapuccino de Moka</p>
-        <p>🧁Frapuccino de Magnum</p>
-        <p>🍪Frapuccino de Galleta oreo</p>
-        <p>🍧Frapuccino de Fresa</p>
-        <p>🧀Frapuccino de Queso de poro</p>
-         <p>🍫Frapuccino de vainilla</p>
-      </div>
-    </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Tamaños y Precios</h3>
-        <p>🥤 Frapuccino - <strong>$60</strong></p>
-        <p>🥤 Frapuccino - <strong>$65</strong></p>
-        <p>🥤 Frapuccino - <strong>$70</strong></p>
-        <p>🥤 Frapuccino - <strong>$75</strong></p>
-        <p>🥤 Frapuccino - <strong>$80</strong></p>
-        <p>🥤 Frapuccino - <strong>$100</strong></p>
-        <p>🥤 Frapuccino - <strong>$130</strong></p>
-        <p>🥤 Frapuccino - <strong>$150</strong></p>
-<h4>Favor de especificar el ingrediente </h4>
-      </div>
-    </div>
+                <p>
+                    Sistema ideal para hogares que buscan ahorrar energía y reducir costos de electricidad.
+                </p>
 
- <!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los Raspados de esencias y sabores naturales -->
+            </div>
 
- <div class="card" data-aos="fade-up">
-      <img src="https://www.progelcone.com/med/pr/3/0112730_1.jpg" alt="Raspados">
-      <div class="card-body">
-        <h3>Raspados de esencias</h3>
-        <p>Raspado de chicle 🍬</p>
-        <p>Raspado de coca🥤</p>
-        <p>Raspado de fresa🍓</p>
-        <p>Raspado de limon🍋‍</p>
-        <p>Raspado de piña🍍</p>
-        <p>Raspado de uva🍇</p> 
-      </div>
-    </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-      <h3>Raspados sabores naturales</h3>
-        <p>Raspado de fresa🍓</p>
-        <p>Raspado de Mango🍋‍</p>
-        <p>Raspado de piña🍍</p>
-        <p>Raspado de uva🍇</p>
-        <p>Raspado de Guanabana</p>
-        <p>Raspado de Nance</p>
-        <p>Raspado de Nance curtido</p>
-<h3>Tamaños y Precios</h3>
-        <p>🥤 Vaso N°10- <strong>$15</strong></p>
-        <p>🥤 Vaso N°12 - <strong>$25</strong></p>
-        <p>🥤 Vaso N°14- <strong>$35</strong></p>
-        <p>🥤 Vaso N°16- <strong>$50</strong></p>
-        <p>🥤 Vaso N°32 - <strong>$70</strong></p>
-<h4>Favor de especificar el tipo de esencia </h4>
-      </div>
-    </div>
-
-
-<!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de las chamoyadas sabor esencia y sabor natural-->
-
-<div class="card" data-aos="fade-up">
-      <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/12/f414x232-32021_45760_5050.jpg" alt="Chamoyadas">
-      <div class="card-body">
-        <h3>Chamoyada sabor Esencia</h3>
-        <p>Chamoyadas de chicle🍬</p>
-        <p>Chamoyadas de coca🥤</p>
-        <p>Chamoyadas de fresa🍓</p>
-        <p>Chamoyadas de limon🍋‍</p>
-        <p>Chamoyadas de piña🍍</p>
-        <p>Chamoyadas de uva🍇</p>
-      </div>
-    </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Chamoyada sabor Natural</h3>
-        <p>Chamoyadas de fresa🍓</p>
-        <p>Chamoyadas de piña🍍</p>
-        <p>Chamoyadas de mango🥭</p>
-        <p>Chamoyadas de tamarindo🥔</p>
-        <p>Chamoyadas de guanabana</p>
-        <p>Chamoyadas de Nance</p>
-        <p>Chamoyadas de Nance curtido</p>
-<h3>Tamaños y Precios</h3>
-        <p>🥤 Vaso N°10- <strong>$25</strong></p>
-        <p>🥤 Vaso N°12 - <strong>$35</strong></p>
-        <p>🥤 Vaso N°14 - <strong>$45</strong></p>
-        <p>🥤 Vaso N°16 - <strong>$60</strong></p>
-        <p>🥤 Vaso N°32 - <strong>$80</strong></p>
-<h4>Favor de especificar el tipo de esencia  </h4>
-      </div>
- </div>
-
-
-<!-- Nueva tarjeta: Aqui comienza la descripcion, tamaño, precios de los prostres-->
-
-<div class="card" data-aos="fade-up">
-      <img src="https://www.steamycooker.com/wp-content/uploads/2020/08/flan-7-735x547.jpg" alt="Postres">
-      <div class="card-body">
-        <h3>postres</h3>
-        <p>Pay de queso🧀 </p>
-        <p>Queso napolitano🧀 </p>
-        <p>Cupcakes de queso 🧁</p>
-         <p>Cupcakes de chocolate🍫 </p>
-          <p>Cupcakes de vainilla </p>
-           <p>Pastel imposible🍩 </p>
-            <p>Gelatinas de mosaico🍮 </p>
         </div>
+
+        <!-- TARJETA 2 -->
+
+        <div class="card">
+
+            <!-- AQUI VA EL LINK DE GOOGLE DRIVE -->
+            <img src="AQUI_PEGA_EL_LINK_DE_LA_IMAGEN_2" alt="Panel Solar 2">
+
+            <div class="card-content">
+
+                <h2>Instalación Profesional</h2>
+
+                <p>
+                    Equipos modernos, eficientes y diseñados para ofrecer máxima duración y rendimiento.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-<div class="card" data-aos="fade-up">
-      <div class="card-body">
-        <h3>Precios</h3>
-        <p> Pay de queso - <strong>$40</strong></p>
-        <p> Queso napolitano - <strong>$35</strong></p>
-        <p> Cupcakes de queso 🧁- <strong>$25</strong></p>
-        <p> Cupcakes de chocolate🍫- <strong>$20</strong></p>
-        <p> Cupcakes de vainilla🍫- <strong>$20</strong></p>
-        <p> Pastel imposbile🍩- <strong>$50</strong></p>
-         <p> Gelatinas de mosaico🍮- <strong>$25</strong></p>
-<h4>Precio por Rebanada</h4>
-      </div>
-    </div>
+
 </section>
 
+<footer>
 
-<!-- Nueva tarjeta: Este codigo es la estructura del boton ChatBot-->
+    ☀️ Energía limpia para un mejor futuro
 
-<div class="chatbot-container" id="chatbot">
-  <div class="chat-header" onclick="toggleChat('👋 ¡Hola! ¿En qué te puedo ayudar?')">💬</div>
-  <div class="chat-body" id="chatBody">
-    <button onclick="respuesta('🛵 Estimado cliente le recordamos que el servicio a domicilio tiene un costo de $15 pesos adicional a su pedido')">¿ Servicio a domicilio?</button>
-    <button onclick="respuesta('Los productos que tengan disponibilidad en VASO N°16, Postres y mas.')"> ¿Que productos se llevan a domicilio ?</button>
-<button onclick="respuesta('🍧 Sabores: mango, tamarindo, fresa, chicle, oreo, gansito, mazapán y más.')">¿Qué sabores tienen?
-</button>
-    <button onclick="respuesta('🕒 Atendemos de lunes a domingo, de 3:00 PM a 10:00 PM.')">¿Cuál es su horario?</button>
-    <div id="respuestaChat" class="respuesta-chat"></div>
-    <a href=" " target="_blank" class=" "> </a>
-  </div>
-</div>
+</footer>
 
-
-<!-- Nueva tarjeta: Aqui comienza la tarjeta digital para compras y tambien los horarios, ubicacion , Redes sociales -->
-
-<footer id="Forma de pago">
-   <h4>Transferencia electronica💳 </h4>
-   <div class="tarjeta-bancaria">
-  <img class="chip" src="https://png.pngtree.com/png-clipart/20240711/original/pngtree-creditcard-chip-business-chip-detail-photo-png-image_15532774.png" alt="Chip de tarjeta bancaria">
-  <div class="numero-tarjeta">  4169 1614 7558 8025  </div>
-  <div class="info-tarjeta">
-    <div class="nombre-titular">  Francisca San Roman Cruz  </div>
-    <div class="banco">  BanCoppel  </div>
-  </div>
-</div>  
-  <h4>🌎 Mercado Nuevo CETRAM Balancán, Tabasco 🗼</h4>
-  </footer>
-
-
-<!-- Nueva tarjeta: Aqui comienza Botón flotante de Facebook -->
-
-<a href="https://www.facebook.com/share/1CA2ZMbaG8/" class="facebook-btn" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook" />
-</a>
-
-
-<!-- Nueva tarjeta: Este codigo es del boton flotante del carrito donde muestra la lista de productos agregados -->
-
-<button class="ver-carrito-btn" onclick="mostrarResumenPedido()">
-  🛒
-  <span id="carritoNotificacion" class="carrito-notificacion">0</span>
-</button>
-<div id="resumenPedido" class="resumen-pedido">
-<h3>🧾 Tu pedido:</h3>
-<ul id="listaResumen" style="padding-left: 1rem;"></ul>
-<p><strong>Total a pagar:</strong> <span id="totalPagar">$0 MXN</span></p>
-  
-
-  <button onclick="enviarResumenPorWhatsApp()" style="margin-top:10px; background: #25D366; color:white; border:none; padding:6px 12px; border-radius:6px;">
-  📲 WhatsApp
-</button>
-<button onclick="cerrarResumen()" style="margin-top:10px; background: #f44336; color:white; border:none; padding:6px 12px; border-radius:6px;">Cerrar</button>
-
-
-<!-- Nueva tarjeta: AQUI COMIENZA LA PARTE DE TODO EL SCRIPT DE LA PAGINA WEB -->
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-    const searchInput = document.getElementById('searchInput');
-    const productCards = document.querySelectorAll('.card');
-    searchInput.addEventListener('input', function () {
-      const query = this.value.toLowerCase();
-      productCards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(query) ? 'block' : 'none';
-      });
-    });
-  </script>
-
-<!-- Nueva tarjeta: Este es un Scrip que es parte del formulario de pedidos por Whatssap -->
-
-  <script>
-  const productos = {
-    "Diablito": [
-      "Vaso N° 12- $60 MXN",
-      "Vaso N° 16- $80 MXN",
-      "Vaso N° 32- $100 MXN"
-    ],
-    "Gloria": [
-      "Vaso N° 12- $60 MXN",
-      "Vaso N° 16- $80 MXN",
-      "Vaso N° 32- $100 MXN"
-    ],
-
-    "Soda Italiana": [
-      "Sabor fresa - $ 55 MXN",
-      "Sabor manzana verde - $ 55 MXN",
-      "Sabor mora - $ 55 MXN",
-      "Strawberry Milk - $ 65 MXN ",
-      "Bluberry Milk - $ 65 MXN ",
-      
-    ],
-    "Frappe": [
-      "de vainilla - $ 60 MXN",
-      "de moka - $ 60 MXN",
-      "de oreo - $ 65 MXN",
-      "de taro - $ 65 XN",
-      "de matcha - $ 65 MXN",
-      "de fresa - $ 70 MXN",
-      "de chicle - $ 70 MXN",
-      "de mazapan - $ 70 MXN",
-      "de gansito - $ 75 MXN",
-      "de nutela - $ 75 MXN",
-      "de ferrero rocher - $ 130 MXN",
-      "de magnum - $ 150 MXN",
-      "de pozol con cacao - $ 80 MXN",
-      "de queso de poro - $ 100 MXN",
-      
-    ],
- "Raspado de Esencia": [
-      "Vaso N° 10- $15 MXN",
-      "Vaso N° 12- $25 MXN",
-      "Vaso N° 14- $35 MXN",
-      "Vaso N° 16- $50 MXN",
-      "Vaso N° 32- $70 MXN",
-    ],
- "Raspado Natural": [
-      "Vaso N° 10- $15 MXN",
-      "Vaso N° 12- $25 MXN",
-      "Vaso N° 14- $35 MXN",
-      "Vaso N° 16- $50 MXN",
-      "Vaso N° 32- $70 MXN",
-      
-    ],
- "Chamoyada de Esencia": [
-      "Vaso N° 10- $25 MXN",
-      "Vaso N° 12- $35 MXN",
-      "Vaso N° 14- $45 MXN",
-      "Vaso N° 16- $60 MXN",
-      "Vaso N° 32- $80 MXN",
-    ],
-    "Chamoyada Natural": [
-      "Vaso N° 10- $25 MXN",
-      "Vaso N° 12- $35 MXN",
-      "Vaso N° 14- $45 MXN",
-      "Vaso N° 16- $60 MXN",
-      "Vaso N° 32- $80 MXN",
-    ],
-    "Postre": [
-      "Pay de queso - $40 MXN",
-      "Queso napolitano - $35 MXN",
-      "Pastel imposble - $50 MXN",
-      "Gelatina de mosaico - $25 MXN",
-      "Gelatina de oreo - $35 MXN",
-      
-    ],
-    "Refresco": [
-      "Agua embotellada 600 ml- $25 MXN",
-      "Chivacola 600 ml- $25 MXN",
-    ],    
- };
-
-  const productoSelect = document.getElementById("producto");
-  const tamanoSelect = document.getElementById("tamano");
-
-  productoSelect.addEventListener("change", function() {
-    const productoSeleccionado = productoSelect.value;
-    const tamaños = productos[productoSeleccionado];
-
-    tamanoSelect.innerHTML = "";
-    tamaños.forEach(tamaño => {
-      const option = document.createElement("option");
-      option.value = tamaño;
-      option.text = tamaño;
-      tamanoSelect.appendChild(option);
-    });
-  });
-
-  const productoSeleccionado = productoSelect.value;
-  const tamaños = productos[productoSeleccionado];
-  tamanoSelect.innerHTML = "";
-  tamaños.forEach(tamaño => {
-    const option = document.createElement("option");
-    option.value = tamaño;
-    option.text = tamaño;
-    tamanoSelect.appendChild(option);
-  });
-</script>
-
-
-<!-- Nueva tarjeta: Este es un Scrip donde se arma un carrito con diferentes productos y se envie por whatssap -->
-<script>
-  const pedidos = []; 
-function agregarAlCarrito() {
-  const producto = document.getElementById('producto').value;
-  const cantidad = document.getElementById('cantidad').value;
-  const tamano = document.getElementById('tamano').value;
-  const fruta = document.getElementById('fruta').value;
-  const nombre = document.getElementById('nombre').value.trim();
-
-  if (nombre === "") {
-    alert("⚠️ Escribe tu nombre antes de agregar productos al carrito.");
-    document.getElementById('nombre').focus();
-    return;
-  }
-
-  const texto = `${cantidad} ${producto} - ${tamano} - ${fruta}`;
-
-  const match = tamano.match(/\$ ?(\d+)/);
-  const precio = match ? parseInt(match[1]) * parseInt(cantidad) : 0;
-
-  pedidos.push({ texto, precio }); // ✅ Agregamos el pedido
-
-  const lista = document.getElementById('listaPedidos');
-  const item = document.createElement('li');
-
-  lista.appendChild(item);
-
-  // ✅ Limpiar campo fruta
-  document.getElementById('fruta').value = "";
-
-  // ✅ 🔴 Actualizar contador rojo del carrito
-  const noti = document.getElementById('carritoNotificacion');
-  if (pedidos.length > 0) {
-    noti.style.display = 'inline-block';
-    noti.textContent = pedidos.length;
-  } else {
-    noti.style.display = 'none';
-  }
-
-  console.log("Pedido agregado:", pedidos);
-}
-
-  function vaciarCarrito() {
-  pedidos.length = 0; // Limpia el array
-  document.getElementById('listaPedidos').innerHTML = "";
-
-  // 🔴 Oculta el numerito del carrito flotante
-  const noti = document.getElementById('carritoNotificacion');
-  noti.style.display = 'none';
-}
-</script>
-
-
-
-<script>
-function mostrarResumenPedido() {
-  const lista = document.getElementById('listaResumen');
-  const totalText = document.getElementById('totalPagar');
-  lista.innerHTML = '';
-  let total = 0;
-
-  pedidos.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = item.texto;
-    lista.appendChild(li);
-    total += item.precio;
-  });
-
-  totalText.textContent = `$${total} MXN`;
-  document.getElementById('resumenPedido').style.display = 'block';
-}
-
-function cerrarResumen() {
-  document.getElementById('resumenPedido').style.display = 'none';
-}
-</script>
-
-
-<script>
-function enviarResumenPorWhatsApp() {
-  if (pedidos.length === 0) {
-    alert("🛒 No tienes productos en tu pedido.");
-    return;
-  }
-
-  const nombre = document.getElementById('nombre').value.trim();
-  if (nombre === "") {
-    alert("⚠️ Por favor escribe tu nombre antes de enviar el pedido.");
-    document.getElementById('nombre').focus();
-    return;
-  }
-
-  let mensaje = `Hola, te escribe ( ${nombre} ) y quiero pedir:\n\n`;
-  let total = 0;
-
-  pedidos.forEach(item => {
-    mensaje += `✅ ${item.texto}\n`;
-    total += item.precio;
-  });
-
-  mensaje += `\n💵 Total a pagar: $${total} MXN`;
-
-  const numero = "529341184667"; // ← cámbialo si usas otro número
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, "_blank");
-
-  // ✅ Limpiar carrito visual
-  document.getElementById('listaPedidos').innerHTML = "";
-
-  // ✅ Limpiar arreglo pedidos
-  pedidos.length = 0;
-
-  // ✅ Ocultar globito rojo
-  const noti = document.getElementById('carritoNotificacion');
-  noti.style.display = 'none';
-}
-</script>
-
-
-<script>
-function toggleChat() {
-  const chatBody = document.getElementById('chatBody');
-  chatBody.style.display = chatBody.style.display === 'flex' ? 'none' : 'flex';
-}
-function respuesta(texto) {
-  const respuesta = document.getElementById('respuestaChat');
-  respuesta.textContent = texto;
-}
-</script>
-
-<script>
-function toggleChat() {
-  const chatBody = document.getElementById('chatBody');
-  chatBody.style.display = chatBody.style.display === 'flex' ? 'none' : 'flex';
-}
-
-function respuesta(texto) {
-  const respuesta = document.getElementById('respuestaChat');
-  respuesta.textContent = texto;
-}
-
-// 🧠 Abrir chat automáticamente con saludo
-window.addEventListener('load', () => {
-  const chatBody = document.getElementById('chatBody');
-  const respuesta = document.getElementById('respuestaChat');
-  chatBody.style.display = 'flex'; // abrir chat
-  respuesta.textContent = '👋 ¡Hola! ¿En qué te puedo ayudar?'; // saludo
-});
-</script>
 </body>
 </html>
-
